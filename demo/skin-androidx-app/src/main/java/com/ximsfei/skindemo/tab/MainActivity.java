@@ -63,6 +63,5 @@ public class MainActivity extends BaseActivity implements SkinCompatSupportable 
 
     @Override
     public void applySkin() {
-
     }
 }

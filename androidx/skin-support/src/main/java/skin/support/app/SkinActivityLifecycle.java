@@ -5,7 +5,9 @@ import static skin.support.widget.SkinCompatHelper.checkResourceId;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ComponentCallbacks;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,7 +25,7 @@ import skin.support.utils.Slog;
 import skin.support.view.LayoutInflaterCompat;
 import skin.support.widget.SkinCompatSupportable;
 
-public class SkinActivityLifecycle implements Application.ActivityLifecycleCallbacks {
+public class SkinActivityLifecycle implements Application.ActivityLifecycleCallbacks, ComponentCallbacks {
     private static final String TAG = "SkinActivityLifecycle";
     private static volatile SkinActivityLifecycle sInstance = null;
     private WeakHashMap<Context, SkinCompatDelegate> mSkinDelegateMap;
@@ -96,6 +98,20 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
             SkinCompatManager.getInstance().deleteObserver(getObserver(activity));
             mSkinObserverMap.remove(activity);
             mSkinDelegateMap.remove(activity);
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+
+    }
+
+    @Override
+    public void onLowMemory() {
+        if (mSkinDelegateMap != null) {
+            mSkinDelegateMap.forEach(
+                    (context, skinCompatDelegate) -> skinCompatDelegate.onLowMemory()
+            );
         }
     }
 

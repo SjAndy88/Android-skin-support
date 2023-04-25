@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -70,6 +71,16 @@ public class SkinCompatDelegate implements LayoutInflater.Factory2 {
 
     public static SkinCompatDelegate create() {
         return new SkinCompatDelegate();
+    }
+
+    public void onLowMemory() {
+        Iterator<WeakReference<SkinCompatSupportable>> iterator = mSkinHelpers.iterator();
+        while (iterator.hasNext()) {
+            SkinCompatSupportable next = iterator.next().get();
+            if (next == null) {
+                iterator.remove();
+            }
+        }
     }
 
     public void applySkin() {
