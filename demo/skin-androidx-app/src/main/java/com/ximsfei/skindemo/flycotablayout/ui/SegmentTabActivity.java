@@ -2,11 +2,13 @@ package com.ximsfei.skindemo.flycotablayout.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import android.view.View;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -19,12 +21,12 @@ import java.util.ArrayList;
 import skin.support.flycotablayout.widget.SkinMsgView;
 
 public class SegmentTabActivity extends FlycoActivity {
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private ArrayList<Fragment> mFragments2 = new ArrayList<>();
+    private final ArrayList<Fragment> mFragments = new ArrayList<>();
+    private final ArrayList<Fragment> mFragments2 = new ArrayList<>();
 
-    private String[] mTitles = {"首页", "消息"};
-    private String[] mTitles_2 = {"首页", "消息", "联系人"};
-    private String[] mTitles_3 = {"首页", "消息", "联系人", "更多"};
+    private final String[] mTitles = {"首页", "消息"};
+    private final String[] mTitles_2 = {"首页", "消息", "联系人"};
+    private final String[] mTitles_3 = {"首页", "消息", "联系人", "更多"};
     private View mDecorView;
     private SegmentTabLayout mTabLayout_3;
 
@@ -142,6 +144,7 @@ public class SegmentTabActivity extends FlycoActivity {
             return mTitles_3[position];
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             return mFragments.get(position);

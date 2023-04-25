@@ -1,24 +1,26 @@
 package skin.support.design.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.TypedArray;
-import com.google.android.material.tabs.TabLayout;
 import android.util.AttributeSet;
+
+import com.google.android.material.tabs.TabLayout;
 
 import skin.support.content.res.SkinCompatResources;
 import skin.support.design.R;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-
 /**
  * Created by ximsfei on 17-1-14.
  */
 
 public class SkinMaterialTabLayout extends TabLayout implements SkinCompatSupportable {
-    private int mTabIndicatorColorResId = INVALID_ID;
-    private int mTabTextColorsResId = INVALID_ID;
+
+    private int mTabIndicatorColorResId;
+    private int mTabTextColorsResId;
     private int mTabSelectedTextColorResId = INVALID_ID;
 
     public SkinMaterialTabLayout(Context context) {

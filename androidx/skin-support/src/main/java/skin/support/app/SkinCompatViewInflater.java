@@ -62,9 +62,7 @@ public class SkinCompatViewInflater {
         View view = null;
         for (SkinLayoutInflater inflater : SkinCompatManager.getInstance().getHookInflaters()) {
             view = inflater.createView(context, name, attrs);
-            if (view == null) {
-                continue;
-            } else {
+            if (view != null) {
                 break;
             }
         }
@@ -75,9 +73,7 @@ public class SkinCompatViewInflater {
         View view = null;
         for (SkinLayoutInflater inflater : SkinCompatManager.getInstance().getInflaters()) {
             view = inflater.createView(context, name, attrs);
-            if (view == null) {
-                continue;
-            } else {
+            if (view != null) {
                 break;
             }
         }
@@ -94,8 +90,8 @@ public class SkinCompatViewInflater {
             mConstructorArgs[1] = attrs;
 
             if (-1 == name.indexOf('.')) {
-                for (int i = 0; i < sClassPrefixList.length; i++) {
-                    final View view = createView(context, name, sClassPrefixList[i]);
+                for (String s : sClassPrefixList) {
+                    final View view = createView(context, name, s);
                     if (view != null) {
                         return view;
                     }

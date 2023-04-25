@@ -1,5 +1,7 @@
 package skin.support.circleimageview.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -11,16 +13,14 @@ import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatImageHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-
 /**
  * Created by pengfengwang on 2017/3/5.
  */
 
 public class SkinCompatCircleImageView extends CircleImageView implements SkinCompatSupportable {
-    private SkinCompatImageHelper mImageHelper;
-    private int mFillColorResId = INVALID_ID;
-    private int mBorderColorResId = INVALID_ID;
+    private final SkinCompatImageHelper mImageHelper;
+    private int mFillColorResId;
+    private int mBorderColorResId;
 
     public SkinCompatCircleImageView(Context context) {
         this(context, null);

@@ -32,7 +32,7 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:tabIndicatorColor="@color/tabSelected"
+            app:tabIndicatorColor="@color/tabIndicator"
             app:tabSelectedTextColor="@color/tabSelected"
             app:tabTextColor="@color/text_color" />
 

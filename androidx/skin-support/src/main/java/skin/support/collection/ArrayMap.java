@@ -21,7 +21,7 @@ public class ArrayMap<K, V> extends SimpleArrayMap<K, V> implements Map<K, V> {
     /**
      * Create a new ArrayMap with the mappings from the given ArrayMap.
      */
-    public ArrayMap(SimpleArrayMap map) {
+    public ArrayMap(SimpleArrayMap<K, V> map) {
         super(map);
     }
 

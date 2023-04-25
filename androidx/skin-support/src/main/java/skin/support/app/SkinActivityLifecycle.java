@@ -1,5 +1,8 @@
 package skin.support.app;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+import static skin.support.widget.SkinCompatHelper.checkResourceId;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -13,15 +16,12 @@ import java.util.WeakHashMap;
 import skin.support.SkinCompatManager;
 import skin.support.annotation.Skinable;
 import skin.support.content.res.SkinCompatResources;
+import skin.support.content.res.SkinCompatThemeUtils;
 import skin.support.observe.SkinObservable;
 import skin.support.observe.SkinObserver;
 import skin.support.utils.Slog;
 import skin.support.view.LayoutInflaterCompat;
 import skin.support.widget.SkinCompatSupportable;
-import skin.support.content.res.SkinCompatThemeUtils;
-
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-import static skin.support.widget.SkinCompatHelper.checkResourceId;
 
 public class SkinActivityLifecycle implements Application.ActivityLifecycleCallbacks {
     private static final String TAG = "SkinActivityLifecycle";
@@ -115,7 +115,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
 
         SkinCompatDelegate mSkinDelegate = mSkinDelegateMap.get(context);
         if (mSkinDelegate == null) {
-            mSkinDelegate = SkinCompatDelegate.create(context);
+            mSkinDelegate = SkinCompatDelegate.create();
             mSkinDelegateMap.put(context, mSkinDelegate);
         }
         return mSkinDelegate;

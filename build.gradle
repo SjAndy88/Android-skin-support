@@ -2,14 +2,14 @@
 
 buildscript {
     repositories {
-        jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         // NOTE: Do not place your application dependencies here; they belong
@@ -19,11 +19,11 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -32,14 +32,17 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdkVersion = 28
-    minSdkVersion = 14
-    targetSdkVersion = 28
+    compileSdkVersion = 32
+    buildToolsVersion = "32.0.0"
+    minSdkVersion = 28
+    targetSdkVersion = 32
 
-    supportLibraryVersion = "25.1.1"
-    supportLibraryVersionInHost = "28.0.0"
+    appcompatVersion = "1.5.1"
+    materialVersion = "1.7.0"
+    cardViewVersion = "1.0.0"
+    constraintVersion = "2.1.4"
 
-    glideVersion = "4.7.1"
+    glideVersion = "4.13.2"
 
     skinAndroidSupportVersion = "3.1.4"
     skinAndroidSupportSkinGroup = "skin.support"

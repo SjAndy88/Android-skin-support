@@ -44,6 +44,7 @@
                 android:id="@+id/textInputLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/text_input_layout_hint_text_color"
                 android:background="@color/text_background"
                 android:padding="10dp">
 
@@ -53,8 +54,7 @@
                     android:layout_height="?attr/actionBarSize"
                     android:inputType="number"
                     android:padding="5dp"
-                    android:textColor="@color/text_color"
-                    android:textColorHint="@color/text_color_hint" />
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </ScrollView>

@@ -1,9 +1,12 @@
 package skin.support.flycotablayout.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.annotation.DrawableRes;
 import android.util.AttributeSet;
+
+import androidx.annotation.DrawableRes;
 
 import com.flyco.tablayout.SlidingTabLayout;
 
@@ -13,14 +16,12 @@ import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-
 /**
  * Created by ximsf on 2017/3/8.
  */
 
 public class SkinSlidingTabLayout extends SlidingTabLayout implements SkinCompatSupportable {
-    private SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private final SkinCompatBackgroundHelper mBackgroundTintHelper;
     private int mIndicatorColorResId = INVALID_ID;
     private int mUnderlineColorResId = INVALID_ID;
     private int mDividerColorResId = INVALID_ID;

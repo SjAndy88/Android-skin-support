@@ -1,38 +1,43 @@
 package skin.support.design.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StyleRes;
-import com.google.android.material.navigation.NavigationView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StyleRes;
+
+import com.google.android.material.navigation.NavigationView;
+
 import skin.support.content.res.SkinCompatResources;
+import skin.support.content.res.SkinCompatThemeUtils;
 import skin.support.content.res.SkinCompatV7ThemeUtils;
 import skin.support.content.res.SkinCompatVectorResources;
 import skin.support.design.R;
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
-import skin.support.content.res.SkinCompatThemeUtils;
-
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
 
 /**
  * Created by pengfengwang on 2017/1/15.
  */
 
 public class SkinMaterialNavigationView extends NavigationView implements SkinCompatSupportable {
+
     private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
     private static final int[] DISABLED_STATE_SET = {-android.R.attr.state_enabled};
-    private int mItemBackgroundResId = INVALID_ID;
+
+    private final SkinCompatBackgroundHelper mBackgroundTintHelper;
+
+    private int mItemBackgroundResId;
     private int mTextColorResId = INVALID_ID;
     private int mDefaultTintResId = INVALID_ID;
     private int mIconTintResId = INVALID_ID;
-    private SkinCompatBackgroundHelper mBackgroundTintHelper;
 
     public SkinMaterialNavigationView(Context context) {
         this(context, null);

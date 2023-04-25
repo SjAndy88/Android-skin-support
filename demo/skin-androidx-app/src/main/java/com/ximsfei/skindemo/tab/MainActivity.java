@@ -1,11 +1,12 @@
 package com.ximsfei.skindemo.tab;
 
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 import android.view.Menu;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;
 import com.ximsfei.skindemo.tab.fragment.FirstFragment;
@@ -26,7 +27,6 @@ import skin.support.widget.SkinCompatSupportable;
 
 @Skinable
 public class MainActivity extends BaseActivity implements SkinCompatSupportable {
-    private TabFragmentPagerAdapter mTabFragmentPagerAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,15 +48,15 @@ public class MainActivity extends BaseActivity implements SkinCompatSupportable 
         list.add(new SFragment());
         list.add(new TFragment());
         list.add(new LastFragment());
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(new TabFragmentPagerAdapter(getSupportFragmentManager(), list));
         List<String> listTitle = new ArrayList<>();
         listTitle.add("系统组件");
         listTitle.add("自定义View");
         listTitle.add("List");
         listTitle.add("第三方库控件");
-        mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list, listTitle);
+        TabFragmentPagerAdapter mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list, listTitle);
         viewPager.setAdapter(mTabFragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }

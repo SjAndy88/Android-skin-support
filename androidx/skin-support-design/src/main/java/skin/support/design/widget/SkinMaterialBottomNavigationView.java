@@ -1,14 +1,16 @@
 package skin.support.design.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.util.TypedValue;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import android.util.AttributeSet;
-import android.util.TypedValue;
 
 import skin.support.content.res.SkinCompatResources;
 import skin.support.design.R;
@@ -16,21 +18,20 @@ import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-
 /**
  * Created by ximsfei on 17-3-1.
  */
 
 public class SkinMaterialBottomNavigationView extends BottomNavigationView implements SkinCompatSupportable {
+
     private static final int[] DISABLED_STATE_SET = new int[]{-android.R.attr.state_enabled};
     private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
 
-    private SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private final SkinCompatBackgroundHelper mBackgroundTintHelper;
 
     private int mTextColorResId = INVALID_ID;
     private int mIconTintResId = INVALID_ID;
-    private int mDefaultTintResId = INVALID_ID;
+    private int mDefaultTintResId;
 
     public SkinMaterialBottomNavigationView(@NonNull Context context) {
         this(context, null);
@@ -44,21 +45,9 @@ public class SkinMaterialBottomNavigationView extends BottomNavigationView imple
         super(context, attrs, defStyleAttr);
         mBackgroundTintHelper = new SkinCompatBackgroundHelper(this);
         mBackgroundTintHelper.loadFromAttributes(attrs, defStyleAttr);
+        mDefaultTintResId = resolveColorPrimary();
+        mDefaultTintResId = resolveColorPrimary();
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BottomNavigationView, defStyleAttr,
-                R.style.Widget_Design_BottomNavigationView);
-
-        if (a.hasValue(R.styleable.BottomNavigationView_itemIconTint)) {
-            mIconTintResId = a.getResourceId(R.styleable.BottomNavigationView_itemIconTint, INVALID_ID);
-        } else {
-            mDefaultTintResId = resolveColorPrimary();
-        }
-        if (a.hasValue(R.styleable.BottomNavigationView_itemTextColor)) {
-            mTextColorResId = a.getResourceId(R.styleable.BottomNavigationView_itemTextColor, INVALID_ID);
-        } else {
-            mDefaultTintResId = resolveColorPrimary();
-        }
-        a.recycle();
         applyItemIconTintResource();
         applyItemTextColorResource();
     }
@@ -78,7 +67,7 @@ public class SkinMaterialBottomNavigationView extends BottomNavigationView imple
         } else {
             mDefaultTintResId = SkinCompatHelper.checkResourceId(mDefaultTintResId);
             if (mDefaultTintResId != INVALID_ID) {
-                setItemTextColor(createDefaultColorStateList(android.R.attr.textColorSecondary));
+                setItemTextColor(createDefaultColorStateList());
             }
         }
     }
@@ -90,14 +79,14 @@ public class SkinMaterialBottomNavigationView extends BottomNavigationView imple
         } else {
             mDefaultTintResId = SkinCompatHelper.checkResourceId(mDefaultTintResId);
             if (mDefaultTintResId != INVALID_ID) {
-                setItemIconTintList(createDefaultColorStateList(android.R.attr.textColorSecondary));
+                setItemIconTintList(createDefaultColorStateList());
             }
         }
     }
 
-    private ColorStateList createDefaultColorStateList(int baseColorThemeAttr) {
+    private ColorStateList createDefaultColorStateList() {
         final TypedValue value = new TypedValue();
-        if (!getContext().getTheme().resolveAttribute(baseColorThemeAttr, value, true)) {
+        if (!getContext().getTheme().resolveAttribute(android.R.attr.textColorSecondary, value, true)) {
             return null;
         }
         ColorStateList baseColor = SkinCompatResources.getColorStateList(getContext(), value.resourceId);

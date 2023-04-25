@@ -28,7 +28,6 @@ public class ImageUtils {
                     angle = 270;
                     break;
                 default:
-                    angle = 0;
                     break;
             }
         }

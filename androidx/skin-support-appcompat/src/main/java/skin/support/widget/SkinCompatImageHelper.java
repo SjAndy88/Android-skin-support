@@ -16,7 +16,6 @@ import skin.support.content.res.SkinCompatVectorResources;
  * Created by ximsfei on 2017/1/12.
  */
 public class SkinCompatImageHelper extends SkinCompatHelper {
-    private static final String TAG = SkinCompatImageHelper.class.getSimpleName();
     private final ImageView mView;
     private int mSrcResId = INVALID_ID;
     private int mSrcCompatResId = INVALID_ID;

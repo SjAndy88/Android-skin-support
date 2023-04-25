@@ -15,8 +15,7 @@ public class SkinPreference {
     private static final String KEY_SKIN_NAME = "skin-name";
     private static final String KEY_SKIN_STRATEGY = "skin-strategy";
     private static final String KEY_SKIN_USER_THEME = "skin-user-theme-json";
-    private static SkinPreference sInstance;
-    private final Context mApp;
+    private static volatile SkinPreference sInstance;
     private final SharedPreferences mPref;
     private final SharedPreferences.Editor mEditor;
 
@@ -35,8 +34,7 @@ public class SkinPreference {
     }
 
     private SkinPreference(Context applicationContext) {
-        mApp = applicationContext;
-        mPref = mApp.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+        mPref = applicationContext.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
         mEditor = mPref.edit();
     }
 

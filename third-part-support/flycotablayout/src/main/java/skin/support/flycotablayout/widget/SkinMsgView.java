@@ -1,9 +1,12 @@
 package skin.support.flycotablayout.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.annotation.DrawableRes;
 import android.util.AttributeSet;
+
+import androidx.annotation.DrawableRes;
 
 import com.flyco.tablayout.widget.MsgView;
 
@@ -13,17 +16,15 @@ import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
 import skin.support.widget.SkinCompatTextHelper;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-
 /**
  * Created by pengfengwang on 2017/3/9.
  */
 
 public class SkinMsgView extends MsgView implements SkinCompatSupportable {
-    private SkinCompatTextHelper mTextHelper;
-    private SkinCompatBackgroundHelper mBackgroundTintHelper;
-    private int mBackgroundColorResId = INVALID_ID;
-    private int mStrokeColorResId = INVALID_ID;
+    private final SkinCompatTextHelper mTextHelper;
+    private final SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private int mBackgroundColorResId;
+    private int mStrokeColorResId;
     public SkinMsgView(Context context) {
         this(context, null, 0);
     }

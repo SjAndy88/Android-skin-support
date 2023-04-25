@@ -1,6 +1,7 @@
 package com.ximsfei.skindemo.actionbar;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,6 @@ public class ActionbarTestActivity extends AppCompatActivity implements SkinComp
 
     @Override
     public void applySkin() {
-        getSupportActionBar().setBackgroundDrawable(SkinCompatResources.getInstance().getDrawable(R.drawable.bg_bar));
+        getSupportActionBar().setBackgroundDrawable(SkinCompatResources.getDrawable(this, R.drawable.bg_bar));
     }
 }

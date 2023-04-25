@@ -1,9 +1,12 @@
 package skin.support.design.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.TypedArray;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.util.AttributeSet;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import skin.support.content.res.SkinCompatResources;
 import skin.support.design.R;
@@ -11,17 +14,16 @@ import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatImageHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-
 /**
  * Created by pengfengwang on 2017/3/1.
  */
 
 public class SkinMaterialFloatingActionButton extends FloatingActionButton implements SkinCompatSupportable {
-    private int mRippleColorResId = INVALID_ID;
-    private int mBackgroundTintResId = INVALID_ID;
 
-    private SkinCompatImageHelper mImageHelper;
+    private final SkinCompatImageHelper mImageHelper;
+
+    private int mRippleColorResId;
+    private int mBackgroundTintResId;
 
     public SkinMaterialFloatingActionButton(Context context) {
         this(context, null);

@@ -5,11 +5,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ximsfei.skindemo.R;
 
@@ -48,7 +51,7 @@ public class CustomDividerItemDecoration extends RecyclerView.ItemDecoration {
      */
     public CustomDividerItemDecoration(Context context, int orientation) {
 //        final TypedArray a = context.obtainStyledAttributes(ATTRS);
-        mDivider = context.getResources().getDrawable(R.drawable.picture);
+        mDivider = ContextCompat.getDrawable(context, R.drawable.picture);
         setOrientation(orientation);
     }
 
@@ -72,14 +75,11 @@ public class CustomDividerItemDecoration extends RecyclerView.ItemDecoration {
      * @param drawable Drawable that should be used as a divider.
      */
     public void setDrawable(@NonNull Drawable drawable) {
-        if (drawable == null) {
-            throw new IllegalArgumentException("Drawable cannot be null.");
-        }
         mDivider = drawable;
     }
 
     @Override
-    public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+    public void onDraw(@NonNull Canvas c, RecyclerView parent, @NonNull RecyclerView.State state) {
         if (parent.getLayoutManager() == null) {
             return;
         }

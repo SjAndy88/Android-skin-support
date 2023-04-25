@@ -1,15 +1,16 @@
 package skin.support.widget;
 
 import android.content.Context;
-import androidx.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * Created by Jungle68 on 2017/6/27.
  */
 public class SkinCompatScrollView extends ScrollView implements SkinCompatSupportable {
-    private SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private final SkinCompatBackgroundHelper mBackgroundTintHelper;
 
     public SkinCompatScrollView(Context context) {
         this(context, null);

@@ -1,19 +1,20 @@
 package skin.support.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+import static skin.support.widget.SkinCompatHelper.checkResourceId;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.widget.AppCompatSpinner;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatSpinner;
+
 import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatVectorResources;
-
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
-import static skin.support.widget.SkinCompatHelper.checkResourceId;
 
 /**
  * Created by ximsfei on 17-1-21.
@@ -28,7 +29,7 @@ public class SkinCompatSpinner extends AppCompatSpinner implements SkinCompatSup
     private static final int MODE_DROPDOWN = 1;
     private static final int MODE_THEME = -1;
 
-    private SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private final SkinCompatBackgroundHelper mBackgroundTintHelper;
     private int mPopupBackgroundResId = INVALID_ID;
 
     public SkinCompatSpinner(Context context) {

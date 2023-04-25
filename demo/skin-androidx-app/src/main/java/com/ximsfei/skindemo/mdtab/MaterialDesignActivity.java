@@ -2,12 +2,12 @@ package com.ximsfei.skindemo.mdtab;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import android.view.View;
 
+import com.google.android.material.tabs.TabLayout;
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;
 import com.ximsfei.skindemo.settings.SettingsActivity;
@@ -21,7 +21,6 @@ import java.util.List;
  */
 
 public class MaterialDesignActivity extends BaseActivity {
-    private TabFragmentPagerAdapter mTabFragmentPagerAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,12 +28,7 @@ public class MaterialDesignActivity extends BaseActivity {
         setContentView(R.layout.activity_material_design);
         initToolbar();
         configFragments();
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MaterialDesignActivity.this, SettingsActivity.class));
-            }
-        });
+        findViewById(R.id.fab).setOnClickListener(v -> startActivity(new Intent(MaterialDesignActivity.this, SettingsActivity.class)));
     }
 
     private void configFragments() {
@@ -48,7 +42,7 @@ public class MaterialDesignActivity extends BaseActivity {
         listTitle.add("系统组件");
 //        listTitle.add("自定义View");
 //        listTitle.add("第三方库控件");
-        mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list, listTitle);
+        TabFragmentPagerAdapter mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list, listTitle);
         viewPager.setAdapter(mTabFragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }

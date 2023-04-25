@@ -1,15 +1,16 @@
 package skin.support.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.util.AttributeSet;
+
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatCheckedTextView;
-import android.util.AttributeSet;
 
 import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatVectorResources;
-
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
 
 /**
  * Created by ximsfei on 17-1-14.
@@ -20,10 +21,10 @@ public class SkinCompatCheckedTextView extends AppCompatCheckedTextView implemen
     private static final int[] TINT_ATTRS = {
             android.R.attr.checkMark
     };
-    private int mCheckMarkResId = INVALID_ID;
+    private int mCheckMarkResId;
 
-    private SkinCompatTextHelper mTextHelper;
-    private SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private final SkinCompatTextHelper mTextHelper;
+    private final SkinCompatBackgroundHelper mBackgroundTintHelper;
 
     public SkinCompatCheckedTextView(Context context) {
         this(context, null);

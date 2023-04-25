@@ -4,24 +4,23 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,42 +28,28 @@ import skin.support.SkinCompatManager;
 import skin.support.content.res.SkinCompatUserThemeManager;
 
 public class DrawablePickerActivity extends BaseActivity {
-    private Toolbar mToolbar;
     private DrawablePickerAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawable_picker);
-        mToolbar = findViewById(R.id.toolbar);
+        Toolbar mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle("Drawable Picker");
         mToolbar.setSubtitle("Define your exclusive application.");
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         mAdapter = new DrawablePickerAdapter();
-        mAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SkinCompatUserThemeManager.get().addDrawablePath(R.drawable.windowBackground, mAdapter.getItem(position));
-                SkinCompatManager.getInstance().notifyUpdateSkin();
-            }
+        mAdapter.setOnItemClickListener((parent, view, position, id) -> {
+            SkinCompatUserThemeManager.get().addColorState(R.color.windowBackgroundColor, mAdapter.getItem(position));
+            SkinCompatManager.getInstance().notifyUpdateSkin();
         });
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(DrawablePickerActivity.this, 3));
         Button clear = findViewById(R.id.clear);
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SkinCompatUserThemeManager.get().clearDrawables();
-            }
-        });
+        clear.setOnClickListener(v -> SkinCompatUserThemeManager.get().clearDrawables());
         Button apply = findViewById(R.id.apply);
-        apply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SkinCompatUserThemeManager.get().apply();
-            }
-        });
+        apply.setOnClickListener(v -> SkinCompatUserThemeManager.get().apply());
         if (ActivityCompat.checkSelfPermission(this, "android.permission.WRITE_EXTERNAL_STORAGE")
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, 1000);
@@ -97,12 +82,7 @@ public class DrawablePickerActivity extends BaseActivity {
         @Override
         protected List<String> doInBackground(Void... voids) {
             String cameraDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "DCIM" + File.separator + "Camera";
-            File[] files = new File(cameraDirPath).listFiles(new FileFilter() {
-                @Override
-                public boolean accept(File pathname) {
-                    return pathname.getName().endsWith(".jpg") || pathname.getName().endsWith(".png");
-                }
-            });
+            File[] files = new File(cameraDirPath).listFiles(pathname -> pathname.getName().endsWith(".jpg") || pathname.getName().endsWith(".png"));
             List<String> list = new ArrayList<>();
             if (files != null && files.length > 0) {
                 for (File file : files) {

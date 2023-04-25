@@ -1,13 +1,12 @@
 package skin.support.widget;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
 
 import skin.support.R;
 import skin.support.content.res.SkinCompatVectorResources;
@@ -16,8 +15,6 @@ import skin.support.content.res.SkinCompatVectorResources;
  * Created by pengfengwang on 2017/3/8.
  */
 
-@RequiresApi(17)
-@TargetApi(17)
 public class SkinCompatTextHelperV17 extends SkinCompatTextHelper {
     private int mDrawableStartResId = INVALID_ID;
     private int mDrawableEndResId = INVALID_ID;

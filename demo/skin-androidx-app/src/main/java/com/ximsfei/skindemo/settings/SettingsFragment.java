@@ -1,9 +1,9 @@
 package com.ximsfei.skindemo.settings;
 
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
+
 import androidx.annotation.Nullable;
 
 import com.ximsfei.skindemo.R;
@@ -24,49 +24,40 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting_preferences);
         mBuildInNightModePreference = (SwitchPreference) findPreference(BUILD_IN_NIGHT_MODE_KEY);
-        mBuildInNightModePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                mAssetsNightModePreference.setChecked(false);
-                mSDCardNightModePreference.setChecked(false);
-                boolean boolValue = (boolean) newValue;
-                if (boolValue) {
-                    SkinCompatManager.getInstance().loadSkin("night", null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
-                } else {
-                    SkinCompatManager.getInstance().restoreDefaultTheme();
-                }
-                return true;
+        mBuildInNightModePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            mAssetsNightModePreference.setChecked(false);
+            mSDCardNightModePreference.setChecked(false);
+            boolean boolValue = (boolean) newValue;
+            if (boolValue) {
+                SkinCompatManager.getInstance().loadSkin("night", null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
+            } else {
+                SkinCompatManager.getInstance().restoreDefaultTheme();
             }
+            return true;
         });
         mAssetsNightModePreference = (SwitchPreference) findPreference(ASSETS_NIGHT_MODE_KEY);
-        mAssetsNightModePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                mBuildInNightModePreference.setChecked(false);
-                mSDCardNightModePreference.setChecked(false);
-                boolean boolValue = (boolean) newValue;
-                if (boolValue) {
-                    SkinCompatManager.getInstance().loadSkin("night.skin", null, SkinCompatManager.SKIN_LOADER_STRATEGY_ASSETS);
-                } else {
-                    SkinCompatManager.getInstance().restoreDefaultTheme();
-                }
-                return true;
+        mAssetsNightModePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            mBuildInNightModePreference.setChecked(false);
+            mSDCardNightModePreference.setChecked(false);
+            boolean boolValue = (boolean) newValue;
+            if (boolValue) {
+                SkinCompatManager.getInstance().loadSkin("night.skin", null, SkinCompatManager.SKIN_LOADER_STRATEGY_ASSETS);
+            } else {
+                SkinCompatManager.getInstance().restoreDefaultTheme();
             }
+            return true;
         });
         mSDCardNightModePreference = (SwitchPreference) findPreference(SDCARD_NIGHT_MODE_KEY);
-        mSDCardNightModePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                mBuildInNightModePreference.setChecked(false);
-                mAssetsNightModePreference.setChecked(false);
-                boolean boolValue = (boolean) newValue;
-                if (boolValue) {
-                    SkinCompatManager.getInstance().loadSkin("night.skin", null, CustomSDCardLoader.SKIN_LOADER_STRATEGY_SDCARD);
-                } else {
-                    SkinCompatManager.getInstance().restoreDefaultTheme();
-                }
-                return true;
+        mSDCardNightModePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+            mBuildInNightModePreference.setChecked(false);
+            mAssetsNightModePreference.setChecked(false);
+            boolean boolValue = (boolean) newValue;
+            if (boolValue) {
+                SkinCompatManager.getInstance().loadSkin("night.skin", null, CustomSDCardLoader.SKIN_LOADER_STRATEGY_SDCARD);
+            } else {
+                SkinCompatManager.getInstance().restoreDefaultTheme();
             }
+            return true;
         });
     }
 }

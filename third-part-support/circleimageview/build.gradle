@@ -30,5 +30,3 @@ ext {
     moduleName = 'circleimageview'
     descContent = 'hdodenhof/CircleImageView 控件换肤支持包'
 }
-
-apply from: '../../publishing_maven.gradle'

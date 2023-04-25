@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import androidx.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
 
 import skin.support.R;
 import skin.support.content.res.SkinCompatResources;
@@ -18,13 +18,9 @@ import skin.support.content.res.SkinCompatVectorResources;
  */
 
 public class SkinCompatTextHelper extends SkinCompatHelper {
-    private static final String TAG = SkinCompatTextHelper.class.getSimpleName();
 
     public static SkinCompatTextHelper create(TextView textView) {
-        if (Build.VERSION.SDK_INT >= 17) {
-            return new SkinCompatTextHelperV17(textView);
-        }
-        return new SkinCompatTextHelper(textView);
+        return new SkinCompatTextHelperV17(textView);
     }
 
     final TextView mView;
@@ -108,6 +104,7 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
                 ColorStateList color = SkinCompatResources.getColorStateList(mView.getContext(), mTextColorHintResId);
                 mView.setHintTextColor(color);
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -183,4 +180,9 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
         applyTextColorResource();
         applyTextColorHintResource();
     }
+
+//    public void clearTextColorResId() {
+//        mTextColorResId = INVALID_ID;
+//    }
+
 }

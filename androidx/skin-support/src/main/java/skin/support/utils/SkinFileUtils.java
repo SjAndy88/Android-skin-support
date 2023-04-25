@@ -30,7 +30,6 @@ public class SkinFileUtils {
         return context.getCacheDir().getAbsolutePath();
     }
 
-
     public static boolean isFileExists(String path) {
         return !TextUtils.isEmpty(path) && new File(path).exists();
     }

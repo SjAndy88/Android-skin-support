@@ -33,5 +33,3 @@ ext {
     moduleName = 'skin-support'
     descContent = 'skin-support core'
 }
-
-apply from: '../../publishing_maven.gradle'

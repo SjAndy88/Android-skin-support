@@ -3,11 +3,12 @@ package com.ximsfei.skindemo.flycotablayout.ui;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import android.view.View;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -24,19 +25,18 @@ import java.util.Random;
 import skin.support.flycotablayout.widget.SkinMsgView;
 
 public class CommonTabActivity extends FlycoActivity {
-    private Context mContext = this;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private ArrayList<Fragment> mFragments2 = new ArrayList<>();
+    private final Context mContext = this;
+    private final ArrayList<Fragment> mFragments = new ArrayList<>();
+    private final ArrayList<Fragment> mFragments2 = new ArrayList<>();
 
-    private String[] mTitles = {"首页", "消息", "联系人", "更多"};
-    private int[] mIconUnselectIds = {
+    private final String[] mTitles = {"首页", "消息", "联系人", "更多"};
+    private final int[] mIconUnselectIds = {
             R.mipmap.tab_home_unselect, R.mipmap.tab_speech_unselect,
             R.mipmap.tab_contact_unselect, R.mipmap.tab_more_unselect};
-    private int[] mIconSelectIds = {
+    private final int[] mIconSelectIds = {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private View mDecorView;
+    private final ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_1;
     private CommonTabLayout mTabLayout_2;
@@ -62,7 +62,7 @@ public class CommonTabActivity extends FlycoActivity {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
 
-        mDecorView = getWindow().getDecorView();
+        View mDecorView = getWindow().getDecorView();
         mViewPager = ViewFindUtils.find(mDecorView, R.id.vp_2);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         /** with nothing */

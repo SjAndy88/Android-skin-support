@@ -2,13 +2,11 @@ package com.ximsfei.skindemo.window;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;
@@ -19,25 +17,20 @@ public class WindowManagerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_window_manager);
         initToolbar();
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= 23) {
-                    if (!Settings.canDrawOverlays(WindowManagerActivity.this)) {
-                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                Uri.parse("package:" + getPackageName()));
-                        startActivityForResult(intent, 10);
-                        return;
-                    }
-                }
-                startWindowService();
+        findViewById(R.id.button).setOnClickListener(v -> {
+            if (!Settings.canDrawOverlays(WindowManagerActivity.this)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, 10);
+                return;
             }
+            startWindowService();
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10) {
             if (Settings.canDrawOverlays(this)) {
                 startWindowService();

@@ -1,7 +1,10 @@
 package skin.support.content.res;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
+import static androidx.core.graphics.ColorUtils.compositeColors;
+import static skin.support.content.res.SkinCompatThemeUtils.getDisabledThemeAttrColor;
+import static skin.support.content.res.SkinCompatThemeUtils.getThemeAttrColor;
+import static skin.support.content.res.SkinCompatThemeUtils.getThemeAttrColorStateList;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -11,35 +14,28 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.graphics.drawable.LayerDrawable;
-import android.os.Build;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.collection.ArrayMap;
-import androidx.collection.LongSparseArray;
-import androidx.collection.LruCache;
-import androidx.appcompat.R;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.util.Xml;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.R;
+import androidx.collection.ArrayMap;
+import androidx.collection.LongSparseArray;
+import androidx.collection.LruCache;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;
-
-import static androidx.core.graphics.ColorUtils.compositeColors;
-import static skin.support.content.res.SkinCompatThemeUtils.getDisabledThemeAttrColor;
-import static skin.support.content.res.SkinCompatThemeUtils.getThemeAttrColor;
-import static skin.support.content.res.SkinCompatThemeUtils.getThemeAttrColorStateList;
 
 final class SkinCompatDrawableManager {
     private interface InflateDelegate {
@@ -59,20 +55,8 @@ final class SkinCompatDrawableManager {
     public static SkinCompatDrawableManager get() {
         if (INSTANCE == null) {
             INSTANCE = new SkinCompatDrawableManager();
-            installDefaultInflateDelegates(INSTANCE);
         }
         return INSTANCE;
-    }
-
-    private static void installDefaultInflateDelegates(@NonNull SkinCompatDrawableManager manager) {
-        // This sdk version check will affect src:appCompat code path.
-        // Although VectorDrawable exists in Android framework from Lollipop, AppCompat will use the
-        // VectorDrawableCompat before Nougat to utilize the bug fixes in VectorDrawableCompat.
-        if (Build.VERSION.SDK_INT < 24) {
-            manager.addDelegate("vector", new VdcInflateDelegate());
-            // AnimatedVectorDrawableCompat only works on API v11+
-            manager.addDelegate("animated-vector", new AvdcInflateDelegate());
-        }
     }
 
     private static final ColorFilterLruCache COLOR_FILTER_CACHE = new ColorFilterLruCache(6);
@@ -81,7 +65,7 @@ final class SkinCompatDrawableManager {
      * Drawables which should be tinted with the value of {@code R.attr.colorControlNormal},
      * using the default mode using a raw color filter.
      */
-    private static final int[] COLORFILTER_TINT_COLOR_CONTROL_NORMAL = {
+    private static final int[] COLOR_FILTER_TINT_COLOR_CONTROL_NORMAL = {
             R.drawable.abc_textfield_search_default_mtrl_alpha,
             R.drawable.abc_textfield_default_mtrl_alpha,
             R.drawable.abc_ab_share_pack_mtrl_alpha
@@ -105,24 +89,21 @@ final class SkinCompatDrawableManager {
      * Drawables which should be tinted with the value of {@code R.attr.colorControlActivated},
      * using a color filter.
      */
-    private static final int[] COLORFILTER_COLOR_CONTROL_ACTIVATED = {
+    private static final int[] COLOR_FILTER_COLOR_CONTROL_ACTIVATED = {
             R.drawable.abc_textfield_activated_mtrl_alpha,
             R.drawable.abc_textfield_search_activated_mtrl_alpha,
             R.drawable.abc_cab_background_top_mtrl_alpha,
             R.drawable.abc_text_cursor_material,
-            R.drawable.abc_text_select_handle_left_mtrl_dark,
-            R.drawable.abc_text_select_handle_middle_mtrl_dark,
-            R.drawable.abc_text_select_handle_right_mtrl_dark,
-            R.drawable.abc_text_select_handle_left_mtrl_light,
-            R.drawable.abc_text_select_handle_middle_mtrl_light,
-            R.drawable.abc_text_select_handle_right_mtrl_light
+            R.drawable.abc_text_select_handle_left_mtrl,
+            R.drawable.abc_text_select_handle_middle_mtrl,
+            R.drawable.abc_text_select_handle_right_mtrl
     };
 
     /**
      * Drawables which should be tinted with the value of {@code android.R.attr.colorBackground},
      * using the {@link PorterDuff.Mode#MULTIPLY} mode and a color filter.
      */
-    private static final int[] COLORFILTER_COLOR_BACKGROUND_MULTIPLY = {
+    private static final int[] COLOR_FILTER_COLOR_BACKGROUND_MULTIPLY = {
             R.drawable.abc_popup_background_mtrl_mult,
             R.drawable.abc_cab_background_internal_bg,
             R.drawable.abc_menu_hardkey_panel_mtrl_mult
@@ -419,13 +400,13 @@ final class SkinCompatDrawableManager {
         int colorAttr = 0;
         int alpha = -1;
 
-        if (arrayContains(COLORFILTER_TINT_COLOR_CONTROL_NORMAL, resId)) {
+        if (arrayContains(COLOR_FILTER_TINT_COLOR_CONTROL_NORMAL, resId)) {
             colorAttr = R.attr.colorControlNormal;
             colorAttrSet = true;
-        } else if (arrayContains(COLORFILTER_COLOR_CONTROL_ACTIVATED, resId)) {
+        } else if (arrayContains(COLOR_FILTER_COLOR_CONTROL_ACTIVATED, resId)) {
             colorAttr = R.attr.colorControlActivated;
             colorAttrSet = true;
-        } else if (arrayContains(COLORFILTER_COLOR_BACKGROUND_MULTIPLY, resId)) {
+        } else if (arrayContains(COLOR_FILTER_COLOR_BACKGROUND_MULTIPLY, resId)) {
             colorAttr = android.R.attr.colorBackground;
             colorAttrSet = true;
             tintMode = PorterDuff.Mode.MULTIPLY;
@@ -701,7 +682,7 @@ final class SkinCompatDrawableManager {
         // Here we will check that a known Vector drawable resource inside AppCompat can be
         // correctly decoded
         mHasCheckedVectorDrawableSetup = true;
-        final Drawable d = getDrawable(context, R.drawable.abc_vector_test);
+        final Drawable d = getDrawable(context, androidx.appcompat.resources.R.drawable.abc_vector_test);
         if (d == null || !isVectorDrawable(d)) {
             mHasCheckedVectorDrawableSetup = false;
             throw new IllegalStateException("This app has been built with an incorrect "
@@ -714,41 +695,4 @@ final class SkinCompatDrawableManager {
                 || PLATFORM_VD_CLAZZ.equals(d.getClass().getName());
     }
 
-    private static class VdcInflateDelegate implements InflateDelegate {
-        VdcInflateDelegate() {
-        }
-
-        @SuppressLint("NewApi")
-        @Override
-        public Drawable createFromXmlInner(@NonNull Context context, @NonNull XmlPullParser parser,
-                                           @NonNull AttributeSet attrs, @Nullable Resources.Theme theme) {
-            try {
-                return VectorDrawableCompat
-                        .createFromXmlInner(context.getResources(), parser, attrs, theme);
-            } catch (Exception e) {
-                Log.e("VdcInflateDelegate", "Exception while inflating <vector>", e);
-                return null;
-            }
-        }
-    }
-
-    @RequiresApi(11)
-    @TargetApi(11)
-    private static class AvdcInflateDelegate implements InflateDelegate {
-        AvdcInflateDelegate() {
-        }
-
-        @SuppressLint("NewApi")
-        @Override
-        public Drawable createFromXmlInner(@NonNull Context context, @NonNull XmlPullParser parser,
-                                           @NonNull AttributeSet attrs, @Nullable Resources.Theme theme) {
-            try {
-                return AnimatedVectorDrawableCompat
-                        .createFromXmlInner(context, context.getResources(), parser, attrs, theme);
-            } catch (Exception e) {
-                Log.e("AvdcInflateDelegate", "Exception while inflating <animated-vector>", e);
-                return null;
-            }
-        }
-    }
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -17,12 +16,14 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.ximsfei.skindemo.actionbar.ActionbarTestActivity;
 import com.ximsfei.skindemo.alert.AlertDialogActivity;
-import com.ximsfei.skindemo.picker.ColorPickerActivity;
 import com.ximsfei.skindemo.constraint.ConstraintLayoutActivity;
 import com.ximsfei.skindemo.flycotablayout.ui.SimpleHomeActivity;
 import com.ximsfei.skindemo.mdtab.MaterialDesignActivity;
+import com.ximsfei.skindemo.picker.ColorPickerActivity;
 import com.ximsfei.skindemo.picker.DrawablePickerActivity;
 import com.ximsfei.skindemo.tab.MainActivity;
 import com.ximsfei.skindemo.test.TestActivity;
@@ -34,8 +35,7 @@ import com.ximsfei.skindemo.zip.ZipActivity;
  */
 
 public class SplashActivity extends BaseActivity {
-    private ListView mListView;
-    private Context mContext = this;
+    private final Context mContext = this;
     private final String[] mItems = {
             "基础控件",
             "Material Design",
@@ -69,7 +69,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         initToolbar();
 
-        mListView = (ListView) findViewById(R.id.list);
+        ListView mListView = (ListView) findViewById(R.id.list);
         mListView.setCacheColorHint(Color.TRANSPARENT);
         mListView.setFadingEdgeLength(0);
         mListView.setAdapter(new HomeAdapter(mContext, mItems));
@@ -84,8 +84,8 @@ public class SplashActivity extends BaseActivity {
     }
 
     public class HomeAdapter extends BaseAdapter {
-        private String[] mItems;
-        private DisplayMetrics mDisplayMetrics;
+        private final String[] mItems;
+        private final DisplayMetrics mDisplayMetrics;
 
         public HomeAdapter(Context context, String[] items) {
             this.mItems = items;
@@ -114,10 +114,10 @@ public class SplashActivity extends BaseActivity {
             int padding = (int) (mDisplayMetrics.density * 10);
 
 
-            TextView tv = (TextView) getLayoutInflater().inflate(R.layout.simple_spinner_item, null);
+            TextView tv = (TextView) getLayoutInflater().inflate(R.layout.simple_spinner_item, parent, false);
             tv.setText(mItems[position]);
             tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-            tv.setTextAppearance(SplashActivity.this, R.style.SkinCompatTextAppearance);
+            tv.setTextAppearance(R.style.SkinCompatTextAppearance);
             tv.setGravity(Gravity.CENTER);
             tv.setPadding(padding, padding, padding, padding);
             AbsListView.LayoutParams lp = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT,

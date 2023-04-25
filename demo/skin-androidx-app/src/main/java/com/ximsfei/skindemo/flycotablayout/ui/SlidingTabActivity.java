@@ -3,12 +3,13 @@ package com.ximsfei.skindemo.flycotablayout.ui;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import android.view.View;
-import android.widget.Toast;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -21,13 +22,12 @@ import java.util.ArrayList;
 import skin.support.flycotablayout.widget.SkinMsgView;
 
 public class SlidingTabActivity extends FlycoActivity implements OnTabSelectListener {
-    private Context mContext = this;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private final Context mContext = this;
+    private final ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
             "热门", "iOS", "Android"
             , "前端", "后端", "设计", "工具资源"
     };
-    private MyPagerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class SlidingTabActivity extends FlycoActivity implements OnTabSelectList
 
         View decorView = getWindow().getDecorView();
         ViewPager vp = ViewFindUtils.find(decorView, R.id.vp);
-        mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager());
         vp.setAdapter(mAdapter);
 
         /** 默认 */

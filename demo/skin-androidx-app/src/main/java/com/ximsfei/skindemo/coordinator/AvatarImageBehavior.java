@@ -1,10 +1,12 @@
 package com.ximsfei.skindemo.coordinator;
 
 import android.content.Context;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.appcompat.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.ximsfei.skindemo.R;
 
@@ -29,7 +31,6 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
     private float mStartToolbarPosition; // Toolbar的起始位置
 
     private final Context mContext;
-    private float mAvatarMaxSize;
 
     public AvatarImageBehavior(Context context, AttributeSet attrs) {
         mContext = context;
@@ -41,18 +42,18 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
     }
 
     private void bindDimensions() {
-        mAvatarMaxSize = mContext.getResources().getDimension(R.dimen.image_width);
+        float mAvatarMaxSize = mContext.getResources().getDimension(R.dimen.image_width);
     }
 
 
     @Override
-    public boolean layoutDependsOn(CoordinatorLayout parent, CircleImageView child, View dependency) {
+    public boolean layoutDependsOn(@NonNull CoordinatorLayout parent, @NonNull CircleImageView child, @NonNull View dependency) {
         // 依赖Toolbar控件
         return dependency instanceof Toolbar;
     }
 
     @Override
-    public boolean onDependentViewChanged(CoordinatorLayout parent, CircleImageView child, View dependency) {
+    public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull CircleImageView child, @NonNull View dependency) {
 
         // 初始化属性
         shouldInitProperties(child, dependency);
@@ -121,7 +122,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageV
 
         // Toolbar的起始位置
         if (mStartToolbarPosition == 0)
-            mStartToolbarPosition = dependency.getY() + (dependency.getHeight() / 2);
+            mStartToolbarPosition = dependency.getY() + (int)(dependency.getHeight() / 2.0);
     }
 
     // 获取状态栏高度

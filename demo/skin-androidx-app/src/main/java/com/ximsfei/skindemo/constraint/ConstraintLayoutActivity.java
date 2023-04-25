@@ -2,8 +2,8 @@ package com.ximsfei.skindemo.constraint;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
-import android.view.View;
 
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;
@@ -19,11 +19,6 @@ public class ConstraintLayoutActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_constraint_layout);
 
-        findViewById(R.id.text).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ConstraintLayoutActivity.this, SettingsActivity.class));
-            }
-        });
+        findViewById(R.id.text).setOnClickListener(v -> startActivity(new Intent(ConstraintLayoutActivity.this, SettingsActivity.class)));
     }
 }

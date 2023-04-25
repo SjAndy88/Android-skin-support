@@ -1,5 +1,6 @@
 package com.ximsfei.skindemo.tab.fragment;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private List<Fragment> mFragments;
+    private final List<Fragment> mFragments;
     private List<String> mTitles;
 
     public TabFragmentPagerAdapter(FragmentManager fragmentManager, List<Fragment> fragments) {
@@ -26,6 +27,7 @@ public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
         mTitles = titles;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         return mFragments.get(position);

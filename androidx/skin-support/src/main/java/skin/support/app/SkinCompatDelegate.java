@@ -18,12 +18,10 @@ import skin.support.widget.SkinCompatSupportable;
  */
 
 public class SkinCompatDelegate implements LayoutInflater.Factory2 {
-    private final Context mContext;
     private SkinCompatViewInflater mSkinCompatViewInflater;
-    private List<WeakReference<SkinCompatSupportable>> mSkinHelpers = new CopyOnWriteArrayList<>();
+    private final List<WeakReference<SkinCompatSupportable>> mSkinHelpers = new CopyOnWriteArrayList<>();
 
-    private SkinCompatDelegate(Context context) {
-        mContext = context;
+    private SkinCompatDelegate() {
     }
 
     @Override
@@ -62,7 +60,7 @@ public class SkinCompatDelegate implements LayoutInflater.Factory2 {
 
         List<SkinWrapper> wrapperList = SkinCompatManager.getInstance().getWrappers();
         for (SkinWrapper wrapper : wrapperList) {
-            Context wrappedContext = wrapper.wrapContext(mContext, parent, attrs);
+            Context wrappedContext = wrapper.wrapContext(context, parent, attrs);
             if (wrappedContext != null) {
                 context = wrappedContext;
             }
@@ -70,15 +68,15 @@ public class SkinCompatDelegate implements LayoutInflater.Factory2 {
         return mSkinCompatViewInflater.createView(parent, name, context, attrs);
     }
 
-    public static SkinCompatDelegate create(Context context) {
-        return new SkinCompatDelegate(context);
+    public static SkinCompatDelegate create() {
+        return new SkinCompatDelegate();
     }
 
     public void applySkin() {
-        if (mSkinHelpers != null && !mSkinHelpers.isEmpty()) {
-            for (WeakReference ref : mSkinHelpers) {
+        if (!mSkinHelpers.isEmpty()) {
+            for (WeakReference<SkinCompatSupportable> ref : mSkinHelpers) {
                 if (ref != null && ref.get() != null) {
-                    ((SkinCompatSupportable) ref.get()).applySkin();
+                    ref.get().applySkin();
                 }
             }
         }

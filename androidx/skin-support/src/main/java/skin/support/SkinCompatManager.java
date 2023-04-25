@@ -1,5 +1,6 @@
 package skin.support;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -9,7 +10,9 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.util.SparseArray;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,29 +22,26 @@ import skin.support.annotation.Nullable;
 import skin.support.app.SkinActivityLifecycle;
 import skin.support.app.SkinLayoutInflater;
 import skin.support.app.SkinWrapper;
+import skin.support.content.res.SkinCompatResources;
 import skin.support.load.SkinAssetsLoader;
 import skin.support.load.SkinBuildInLoader;
 import skin.support.load.SkinNoneLoader;
-import skin.support.load.SkinPrefixBuildInLoader;
 import skin.support.observe.SkinObservable;
 import skin.support.utils.SkinPreference;
-import skin.support.content.res.SkinCompatResources;
 
 public class SkinCompatManager extends SkinObservable {
     public static final int SKIN_LOADER_STRATEGY_NONE = -1;
     public static final int SKIN_LOADER_STRATEGY_ASSETS = 0;
     public static final int SKIN_LOADER_STRATEGY_BUILD_IN = 1;
-    public static final int SKIN_LOADER_STRATEGY_PREFIX_BUILD_IN = 2;
     private static volatile SkinCompatManager sInstance;
     private final Object mLock = new Object();
     private final Context mAppContext;
     private boolean mLoading = false;
-    private List<SkinWrapper> mWrappers = new ArrayList<>();
-    private List<SkinLayoutInflater> mInflaters = new ArrayList<>();
-    private List<SkinLayoutInflater> mHookInflaters = new ArrayList<>();
-    private SparseArray<SkinLoaderStrategy> mStrategyMap = new SparseArray<>();
+    private final List<SkinWrapper> mWrappers = new ArrayList<>();
+    private final List<SkinLayoutInflater> mInflaters = new ArrayList<>();
+    private final List<SkinLayoutInflater> mHookInflaters = new ArrayList<>();
+    private final SparseArray<SkinLoaderStrategy> mStrategyMap = new SparseArray<>();
     private boolean mSkinAllActivityEnable = true;
-    private boolean mSkinStatusBarColorEnable = false;
     private boolean mSkinWindowBackgroundColorEnable = true;
 
     /**
@@ -123,7 +123,6 @@ public class SkinCompatManager extends SkinObservable {
          * {@link #SKIN_LOADER_STRATEGY_NONE}
          * {@link #SKIN_LOADER_STRATEGY_ASSETS}
          * {@link #SKIN_LOADER_STRATEGY_BUILD_IN}
-         * {@link #SKIN_LOADER_STRATEGY_PREFIX_BUILD_IN}
          *
          * @return 皮肤包加载策略类型.
          */
@@ -131,7 +130,7 @@ public class SkinCompatManager extends SkinObservable {
     }
 
     /**
-     * 初始化换肤框架. 通过该方法初始化，应用中Activity需继承自{@link skin.support.app.SkinCompatActivity}.
+     * 初始化换肤框架. 通过该方法初始化.
      *
      * @param context
      * @return
@@ -153,7 +152,7 @@ public class SkinCompatManager extends SkinObservable {
     }
 
     /**
-     * 初始化换肤框架，监听Activity生命周期. 通过该方法初始化，应用中Activity无需继承{@link skin.support.app.SkinCompatActivity}.
+     * 初始化换肤框架，监听Activity生命周期.
      *
      * @param application 应用Application.
      * @return
@@ -173,7 +172,6 @@ public class SkinCompatManager extends SkinObservable {
         mStrategyMap.put(SKIN_LOADER_STRATEGY_NONE, new SkinNoneLoader());
         mStrategyMap.put(SKIN_LOADER_STRATEGY_ASSETS, new SkinAssetsLoader());
         mStrategyMap.put(SKIN_LOADER_STRATEGY_BUILD_IN, new SkinBuildInLoader());
-        mStrategyMap.put(SKIN_LOADER_STRATEGY_PREFIX_BUILD_IN, new SkinPrefixBuildInLoader());
     }
 
     public Context getContext() {
@@ -198,7 +196,7 @@ public class SkinCompatManager extends SkinObservable {
     /**
      * 自定义View换肤时，可选择添加一个{@link SkinLayoutInflater}
      *
-     * @param inflater 在{@link skin.support.app.SkinCompatViewInflater#createView(Context, String, String)}方法中调用.
+     * @param inflater 在{@link skin.support.app.SkinCompatViewInflater#createView(View, String, Context, AttributeSet)}方法中调用.
      * @return
      */
     public SkinCompatManager addInflater(SkinLayoutInflater inflater) {
@@ -221,7 +219,7 @@ public class SkinCompatManager extends SkinObservable {
     /**
      * 自定义View换肤时，可选择添加一个{@link SkinLayoutInflater}
      *
-     * @param inflater 在{@link skin.support.app.SkinCompatViewInflater#createView(Context, String, String)}方法中最先调用.
+     * @param inflater 在{@link skin.support.app.SkinCompatViewInflater#createView(View, String, Context, AttributeSet)}方法中最先调用.
      * @return
      */
     @Deprecated
@@ -267,17 +265,6 @@ public class SkinCompatManager extends SkinObservable {
         return mSkinAllActivityEnable;
     }
 
-    @Deprecated
-    public SkinCompatManager setSkinStatusBarColorEnable(boolean enable) {
-        mSkinStatusBarColorEnable = enable;
-        return this;
-    }
-
-    @Deprecated
-    public boolean isSkinStatusBarColorEnable() {
-        return mSkinStatusBarColorEnable;
-    }
-
     /**
      * 设置WindowBackground换肤，使用Theme中的{@link android.R.attr#windowBackground}属性.
      *
@@ -298,7 +285,7 @@ public class SkinCompatManager extends SkinObservable {
      *
      * @return
      */
-    public AsyncTask loadSkin() {
+    public AsyncTask<String, Void, String> loadSkin() {
         String skin = SkinPreference.getInstance().getSkinName();
         int strategy = SkinPreference.getInstance().getSkinStrategy();
         if (TextUtils.isEmpty(skin) || strategy == SKIN_LOADER_STRATEGY_NONE) {
@@ -313,7 +300,7 @@ public class SkinCompatManager extends SkinObservable {
      * @param listener 皮肤包加载监听.
      * @return
      */
-    public AsyncTask loadSkin(SkinLoaderListener listener) {
+    public AsyncTask<String, Void, String> loadSkin(SkinLoaderListener listener) {
         String skin = SkinPreference.getInstance().getSkinName();
         int strategy = SkinPreference.getInstance().getSkinStrategy();
         if (TextUtils.isEmpty(skin) || strategy == SKIN_LOADER_STRATEGY_NONE) {
@@ -323,12 +310,12 @@ public class SkinCompatManager extends SkinObservable {
     }
 
     @Deprecated
-    public AsyncTask loadSkin(String skinName) {
+    public AsyncTask<String, Void, String> loadSkin(String skinName) {
         return loadSkin(skinName, null);
     }
 
     @Deprecated
-    public AsyncTask loadSkin(String skinName, final SkinLoaderListener listener) {
+    public AsyncTask<String, Void, String> loadSkin(String skinName, final SkinLoaderListener listener) {
         return loadSkin(skinName, listener, SKIN_LOADER_STRATEGY_ASSETS);
     }
 
@@ -339,7 +326,7 @@ public class SkinCompatManager extends SkinObservable {
      * @param strategy 皮肤包加载策略.
      * @return
      */
-    public AsyncTask loadSkin(String skinName, int strategy) {
+    public AsyncTask<String, Void, String> loadSkin(String skinName, int strategy) {
         return loadSkin(skinName, null, strategy);
     }
 
@@ -351,7 +338,7 @@ public class SkinCompatManager extends SkinObservable {
      * @param strategy 皮肤包加载策略.
      * @return
      */
-    public AsyncTask loadSkin(String skinName, SkinLoaderListener listener, int strategy) {
+    public AsyncTask<String, Void, String> loadSkin(String skinName, SkinLoaderListener listener, int strategy) {
         SkinLoaderStrategy loaderStrategy = mStrategyMap.get(strategy);
         if (loaderStrategy == null) {
             return null;
@@ -359,6 +346,7 @@ public class SkinCompatManager extends SkinObservable {
         return new SkinLoadTask(listener, loaderStrategy).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, skinName);
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class SkinLoadTask extends AsyncTask<String, Void, String> {
         private final SkinLoaderListener mListener;
         private final SkinLoaderStrategy mStrategy;
