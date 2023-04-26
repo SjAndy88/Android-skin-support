@@ -1,15 +1,8 @@
 # Android-skin-support
 
-中文 | [In English](docs/README.md) 
-
-[![skin-support](https://img.shields.io/badge/release-v4.0.5-green.svg)](http://jcenter.bintray.com/skin/support)
-![build](https://img.shields.io/badge/build-passing-green.svg)
-![license](https://img.shields.io/badge/license-mit-blue.svg)
-
 * [介绍](#介绍)
   * [功能](#功能)
   * [目录结构](#目录结构)
-* [Demo](#demo)
 * [框架用法](#用法)
   * [导入](#导入)
   * [使用](#使用)
@@ -75,12 +68,6 @@ SkinCompatManager.withoutActivity(this).loadSkin();
 
 >> [circleimageview](third-part／circleimageview)  // hdodenhof/CircleImageView支持
 
-## Demo
-
-![default](https://github.com/ximsfei/Res/blob/master/skin/preview/default.png)
-![app-in](https://github.com/ximsfei/Res/blob/master/skin/preview/app-in.png)
-![plug-in](https://github.com/ximsfei/Res/blob/master/skin/preview/plug-in.png)
-
 ## 用法
 
 [最新版本选择, 请查看更新日志](docs/ChangeLog.md)
@@ -92,11 +79,11 @@ SkinCompatManager.withoutActivity(this).loadSkin();
 
 如果项目中使用了[AndroidX](https://developer.android.google.cn/topic/libraries/support-library/androidx-overview), 添加以下依赖
 ```xml
-implementation 'alps.ui.skin:skin-base:0.0.1'               // skin-base
-implementation 'alps.ui.skin:skin-appcompat:0.0.1'          // skin-appcompat 基础控件支持
-implementation 'alps.ui.skin:skin-material:0.0.1'           // skin-material MaterialDesign 控件支持[可选]
-implementation 'alps.ui.skin:skin-cardview:0.0.1'           // skin-cardview CardView 控件支持[可选]
-implementation 'alps.ui.skin:skin-constraintlayout:0.0.1'   // skin-constraintlayout ConstraintLayout 控件支持[可选]
+implementation 'ui.skin:skin-base:0.0.1'               // skin-base
+implementation 'ui.skin:skin-appcompat:0.0.1'          // skin-appcompat 基础控件支持
+implementation 'ui.skin:skin-material:0.0.1'           // skin-material MaterialDesign 控件支持[可选]
+implementation 'ui.skin:skin-cardview:0.0.1'           // skin-cardview CardView 控件支持[可选]
+implementation 'ui.skin:skin-constraintlayout:0.0.1'   // skin-constraintlayout ConstraintLayout 控件支持[可选]
 ```
 
 在Application的onCreate中初始化
@@ -164,17 +151,17 @@ SkinCompatManager.getInstance().restoreDefaultTheme();
 
 * 自定义View可以直接继承自SkinCompatView, SkinCompatLinearLayout等已有控件
 
-  eg: [CustomTextView](demo/skin-app/src/main/java/com/ximsfei/skindemo/widget/CustomTextView.java)
+  eg: [CustomTextView](demo/skin-sample/src/main/java/com/skin/demo/widget/CustomTextView.java)
 
 * 不想继承自已有控件
 
-  eg: [CustomTextView2](demo/skin-app/src/main/java/com/ximsfei/skindemo/widget/CustomTextView2.java)
+  eg: [CustomTextView2](demo/skin-sample/src/main/java/com/skin/demo/widget/CustomTextView2.java)
 
 * 需要换肤自定义属性
 
   // 需要换肤AutoCompleteTextView的R.attr.popupBackground属性
 
-  eg: [SkinCompatAutoCompleteTextView](androidx/skin-support-appcompat/src/main/java/skin/support/widget/SkinCompatAutoCompleteTextView.java)
+  eg: [SkinCompatAutoCompleteTextView](androidx/skin-appcompat/src/main/java/skin/support/widget/SkinCompatAutoCompleteTextView.java)
 
 * 需要使用第三方库控件怎么办
 
@@ -195,7 +182,7 @@ SkinCompatManager.getInstance().loadSkin("night", SkinCompatManager.SKIN_LOADER_
 
 推荐将应用内换肤相关的皮肤资源放到单独的目录中
 
-eg: [res-night](https://github.com/ximsfei/Android-skin-support/tree/master/demo/skin-app/src/main/res-night)
+eg: [res-night](demo/skin-sample/src/main/res-night)
 
 *注: 如果使用这种方式来增加换肤资源，记得在build.gradle 中配置一下这个资源目录 sourceSets {main {res.srcDirs = ['src/main/res', 'src/main/res-night']}}*
 
@@ -208,8 +195,8 @@ eg: [res-night](https://github.com/ximsfei/Android-skin-support/tree/master/demo
 
 例如:
 ```xml
-宿主包名: com.ximsfei.skindemo
-夜间模式: com.ximsfei.skindemo.night
+宿主包名: com.skin.demo
+夜间模式: com.skin.demo.night
 ```
 
 #### 将需要换肤的资源放到res目录下(同名资源)
@@ -281,9 +268,7 @@ SkinCompatManager.getInstance().loadSkin("night.skin", null, CustomSDCardLoader.
 
 ### 获取当前使用皮肤
 
-```
-https://github.com/ximsfei/Android-skin-support/blob/master/androidx/skin-support/src/main/java/skin/support/utils/SkinPreference.java
-```
+[SkinPreference](androidx/skin-base/src/main/java/skin/support/utils/SkinPreference.java)
 
 ## 缺点
 

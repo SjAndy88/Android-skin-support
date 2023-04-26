@@ -1,18 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ximsfei.skindemo">
+    package="com.skin.demo">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.ximsfei.skindemo.App"
+        android:name="com.skin.demo.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.ximsfei.skindemo.SplashActivity"
+        <activity android:name="com.skin.demo.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,29 +21,29 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.ximsfei.skindemo.tab.MainActivity" />
+        <activity android:name="com.skin.demo.tab.MainActivity" />
 
-        <activity android:name="com.ximsfei.skindemo.window.WindowManagerActivity" />
+        <activity android:name="com.skin.demo.window.WindowManagerActivity" />
 
         <activity
-            android:name="com.ximsfei.skindemo.settings.SettingsActivity"
+            android:name="com.skin.demo.settings.SettingsActivity"
             android:label="SettingsActivity" />
 
         <activity
-            android:name="com.ximsfei.skindemo.mdtab.CollapsingToolbarLayoutActivity"
+            android:name="com.skin.demo.mdtab.CollapsingToolbarLayoutActivity"
             android:label="CollapsingToolbarLayoutActivity" />
 
         <activity
-            android:name="com.ximsfei.skindemo.alert.AlertDialogActivity"
+            android:name="com.skin.demo.alert.AlertDialogActivity"
             android:label="AlertDialogActivity"
             android:theme="@style/AlertDialogTheme" />
 
         <activity
-            android:name="com.ximsfei.skindemo.mdtab.MaterialDesignActivity"
+            android:name="com.skin.demo.mdtab.MaterialDesignActivity"
             android:label="Material Design"
             android:theme="@style/MaterialDesignTheme" />
 
-        <service android:name="com.ximsfei.skindemo.window.WindowService" />
+        <service android:name="com.skin.demo.window.WindowService" />
     </application>
 
 </manifest>

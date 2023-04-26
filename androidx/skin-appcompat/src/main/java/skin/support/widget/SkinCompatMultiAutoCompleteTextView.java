@@ -13,10 +13,7 @@ import androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView;
 import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * @author ximsfei
- * @date 17-1-14
- */
+
 
 public class SkinCompatMultiAutoCompleteTextView extends AppCompatMultiAutoCompleteTextView implements SkinCompatSupportable {
     private static final int[] TINT_ATTRS = {
