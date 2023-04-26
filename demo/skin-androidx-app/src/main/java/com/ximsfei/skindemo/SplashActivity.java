@@ -1,5 +1,6 @@
 package com.ximsfei.skindemo;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,49 +19,29 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.ximsfei.skindemo.actionbar.ActionbarTestActivity;
 import com.ximsfei.skindemo.alert.AlertDialogActivity;
-import com.ximsfei.skindemo.constraint.ConstraintLayoutActivity;
-import com.ximsfei.skindemo.flycotablayout.ui.SimpleHomeActivity;
 import com.ximsfei.skindemo.mdtab.MaterialDesignActivity;
-import com.ximsfei.skindemo.picker.ColorPickerActivity;
-import com.ximsfei.skindemo.picker.DrawablePickerActivity;
 import com.ximsfei.skindemo.tab.MainActivity;
-import com.ximsfei.skindemo.test.TestActivity;
 import com.ximsfei.skindemo.window.WindowManagerActivity;
-import com.ximsfei.skindemo.zip.ZipActivity;
 
 /**
  * Created by ximsf on 2017/3/8.
  */
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends BaseActivity {
     private final Context mContext = this;
     private final String[] mItems = {
             "基础控件",
-            "Material Design",
-            "ConstraintLayout",
-            "FlycoTabLayout",
+            "MaterialDesign",
             "AlertDialog",
-            "WindowManager",
-            "Test",
-            "Actionbar",
-            "Color Picker",
-            "Drawable Picker",
-            "Zip包资源加载"
+            "WindowManager"
     };
     private final Class<?>[] mClasses = {
             MainActivity.class,
             MaterialDesignActivity.class,
-            ConstraintLayoutActivity.class,
-            SimpleHomeActivity.class,
             AlertDialogActivity.class,
-            WindowManagerActivity.class,
-            TestActivity.class,
-            ActionbarTestActivity.class,
-            ColorPickerActivity.class,
-            DrawablePickerActivity.class,
-            ZipActivity.class
+            WindowManagerActivity.class
     };
 
     @Override

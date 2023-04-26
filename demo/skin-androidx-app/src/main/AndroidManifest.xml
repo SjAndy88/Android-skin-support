@@ -34,10 +34,6 @@
             android:label="CollapsingToolbarLayoutActivity" />
 
         <activity
-            android:name="com.ximsfei.skindemo.constraint.ConstraintLayoutActivity"
-            android:label="ConstraintLayoutActivity" />
-
-        <activity
             android:name="com.ximsfei.skindemo.alert.AlertDialogActivity"
             android:label="AlertDialogActivity"
             android:theme="@style/AlertDialogTheme" />
@@ -46,41 +42,6 @@
             android:name="com.ximsfei.skindemo.mdtab.MaterialDesignActivity"
             android:label="Material Design"
             android:theme="@style/MaterialDesignTheme" />
-        <activity
-            android:name="com.ximsfei.skindemo.test.TestActivity"
-            android:label="Test Activity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="com.ximsfei.skindemo.actionbar.ActionbarTestActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ActionbarTheme" />
-        <activity
-            android:name="com.ximsfei.skindemo.picker.ColorPickerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.ximsfei.skindemo.picker.DrawablePickerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.ximsfei.skindemo.zip.ZipActivity"
-            android:screenOrientation="portrait" />
-
-        <!-- flycotablayout -->
-        <activity
-            android:name="com.ximsfei.skindemo.flycotablayout.ui.SimpleHomeActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" />
-
-        <activity
-            android:name="com.ximsfei.skindemo.flycotablayout.ui.CommonTabActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.ximsfei.skindemo.flycotablayout.ui.SlidingTabActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.ximsfei.skindemo.flycotablayout.ui.SegmentTabActivity"
-            android:screenOrientation="portrait" />
 
         <service android:name="com.ximsfei.skindemo.window.WindowService" />
     </application>

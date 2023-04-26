@@ -19,7 +19,7 @@ import com.ximsfei.skindemo.R;
  * Created by ximsfei on 17-3-2.
  */
 
-public class MDFirstFragment extends Fragment {
+public class MaterialDesignFragment extends Fragment {
     private View mView;
     private TextInputLayout textInputLayout;
     private EditText editText2;
