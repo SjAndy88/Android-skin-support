@@ -1,12 +1,13 @@
+// DEMO for androidx
+include ':demo:skin-sample'
 include ':demo:skin-night'
 
-// DEMO for androidx
-include ':demo:skin-androidx-app'
-
 // for androidx
-include ':androidx:skin-support'
-include ':androidx:skin-support-appcompat'
-include ':androidx:skin-support-design'
-include ':androidx:skin-support-cardview'
-include ':androidx:skin-support-constraint-layout'
-include ':third-part-support:circleimageview'
+include ':androidx:skin-base'
+include ':androidx:skin-appcompat'
+include ':androidx:skin-material'
+include ':androidx:skin-cardview'
+include ':androidx:skin-constraintlayout'
+
+// for third part
+include ':third-part:circleimageview'

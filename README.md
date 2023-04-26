@@ -8,7 +8,6 @@
 
 * [介绍](#介绍)
   * [功能](#功能)
-  * [TODO](#todo)
   * [目录结构](#目录结构)
 * [Demo](#demo)
 * [框架用法](#用法)
@@ -26,25 +25,8 @@
     * [加载皮肤插件](#加载皮肤插件)
   * [自定义加载策略](#自定义加载策略)
     * [自定义sdcard路径](#自定义sdcard路径)
-    * [zip包中加载资源](#zip包中加载资源)
-  * [动态设置资源](#动态设置资源)
-    * [动态设置颜色](#动态设置颜色)
-    * [动态设置图片](#动态设置图片)
   * [获取当前使用皮肤](#获取当前使用皮肤)
-* [AlertDialog换肤](docs/AlertDialog.md)
-* [更新日志](docs/ChangeLog.md)
-  * [skin-support 更新日志](docs/ChangeLog.md#skin-support-基础控件-支持)
-  * [skin-support-design 更新日志](docs/ChangeLog.md#skin-support-design-material-design-支持)
-  * [skin-support-cardview 更新日志](docs/ChangeLog.md#skin-support-cardview-cardview-支持)
-  * [skin-support-constraint-layout 更新日志](docs/ChangeLog.md#skin-support-constraint-layout-constraintlayout-支持)
-* [第三方控件适配库](docs/ThirdPartSupport.md)
-  * [hdodenhof/CircleImageView](docs/ThirdPartSupport.md#hdodenhofcircleimageview)
-  * [H07000223/FlycoTabLayout](docs/ThirdPartSupport.md#h07000223flycotablayout)
 * [缺点](#缺点)
-* [谁在使用](#谁在使用)
-* [FAQ](docs/FAQ.md)
-* [技术交流](#技术交流)
-* [LICENSE](#license-mit)
 
 ## 介绍
 
@@ -63,49 +45,35 @@ SkinCompatManager.withoutActivity(this).loadSkin();
 * [x] 支持布局中用到的资源换肤。
 * [x] 支持代码中设置的资源换肤。
 * [x] 默认支持大部分基础控件，Material Design换肤。
-* [x] 支持动态设置主题[颜色值](demo/skin-androidx-app/src/main/java/com/ximsfei/skindemo/picker/ColorPickerActivity.java)，支持选择sdcard上的图片作为[drawable](demo/skin-androidx-app/src/main/java/com/ximsfei/skindemo/picker/DrawablePickerActivity.java)换肤资源。
-* [x] 支持多种加载策略([应用内](#应用内换肤)/[插件式](#插件式换肤)/[自定义sdcard路径](#自定义加载策略)/[zip等资源](demo/skin-androidx-app/src/main/java/com/ximsfei/skindemo/loader/ZipSDCardLoader.java)等)。
-* [x] 资源加载优先级: 动态设置资源-加载策略中的资源-插件式换肤/应用内换肤-应用资源。
+* [x] 支持多种加载策略([应用内](#应用内换肤)/[插件式](#插件式换肤)/[自定义sdcard路径](#自定义加载策略))。
+* [x] 资源加载优先级: 加载策略中的资源-应用资源。
 * [x] 支持定制化，选择需要的模块加载。
 * [x] 支持矢量图(vector/svg)换肤。
-* [x] skin-support 4.0.0以上支持AndroidX，4.0.0以下支持support库
-
-*[详细内容, 请查看更新日志](docs/ChangeLog.md)，那里有所有功能提交记录*
-
-### TODO
-
-* [x] 解耦androidx
-* [ ] 支持原生组件换肤
-* [ ] 支持多语言。
-* [ ] 支持多字体。
-* [ ] 支持Preference。
-* [ ] skin-mobile 实现:
-  * [ ] 动态修改主题颜色值
-  * [ ] 控件使用案例
-  * [x] 关于页面
-* [ ] Wiki
+* [x] 支持AndroidX
 
 ### 目录结构
 
-> [demo](demo)                                                        // 换肤demo 集合
+> [demo](demo)  // 换肤demo 集合
 
->> [skin-sample](demo/skin-sample)([skin-app](demo/skin-app))         // demo app
+>> [skin-sample](demo/skin-sample)  // demo app
 
->> [skin-night](demo/skin-night)                                      // 夜间模式皮肤工程
+>> [skin-night](demo/skin-night)  // 夜间模式皮肤工程
 
-> [androidx](androidx)                                  // Android 原生控件
+> [androidx](androidx)   // Android 原生控件
 
->> [skin-support](androidx／skin-support)                      // 换肤框架
+>> [skin-base](androidx／skin-base)  // 换肤框架
 
->> [skin-support-appcompat](androidx／skin-support-appcompat)  // 换肤框架, 基础控件支持
+>> [skin-appcompat](androidx／skin-appcompat)  // 换肤框架, 基础控件支持
 
->> [skin-support-cardview](androidx／skin-support-cardview)    // 换肤框架, CardView 支持
+>> [skin-cardview](androidx／skin-cardview)  // 换肤框架, CardView 支持
 
->> [skin-support-design](androidx／skin-support-design)        // 换肤框架, Material Design 支持
+>> [skin-material](androidx／skin-material)  // 换肤框架, Material Design 支持
 
->> [skin-support-constraint-layout](androidx／skin-support-constraint-layout)  // 换肤框架, ConstraintLayout 支持
+>> [skin-constraintlayout](androidx／skin-constraintlayout)  // 换肤框架, ConstraintLayout 支持
 
-> [third-part-support](third-part-support)           // 第三方控件换肤支持
+> [third-part](third-part)  // 第三方控件换肤支持
+
+>> [circleimageview](third-part／circleimageview)  // hdodenhof/CircleImageView支持
 
 ## Demo
 
@@ -119,56 +87,16 @@ SkinCompatManager.withoutActivity(this).loadSkin();
 
 ### 导入:
 
-#### support library
-
-如果项目中还在使用support库，添加以下依赖
-```xml
-implementation 'skin.support:skin-support:3.1.4'                   // skin-support 基础控件支持
-implementation 'skin.support:skin-support-design:3.1.4'            // skin-support-design material design 控件支持[可选]
-implementation 'skin.support:skin-support-cardview:3.1.4'          // skin-support-cardview CardView 控件支持[可选]
-implementation 'skin.support:skin-support-constraint-layout:3.1.4' // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
-```
-
-在Application的onCreate中初始化
-    
-```java
-@Override
-public void onCreate() {
-    super.onCreate();
-    SkinCompatManager.withoutActivity(this)                         // 基础控件换肤初始化
-            .addInflater(new SkinMaterialViewInflater())            // material design 控件换肤初始化[可选]
-            .addInflater(new SkinConstraintViewInflater())          // ConstraintLayout 控件换肤初始化[可选]
-            .addInflater(new SkinCardViewInflater())                // CardView v7 控件换肤初始化[可选]
-            .setSkinStatusBarColorEnable(false)                     // 关闭状态栏换肤，默认打开[可选]
-            .setSkinWindowBackgroundEnable(false)                   // 关闭windowBackground换肤，默认打开[可选]
-            .loadSkin();
-}
-```
-
-> 如果项目中使用的Activity继承自AppCompatActivity，需要重载getDelegate()方法
-
-```java
-@NonNull
-@Override
-public AppCompatDelegate getDelegate() {
-    return SkinAppCompatDelegateImpl.get(this, this);
-}
-```
 
 #### AndroidX support:
 
 如果项目中使用了[AndroidX](https://developer.android.google.cn/topic/libraries/support-library/androidx-overview), 添加以下依赖
 ```xml
-implementation 'skin.support:skin-support:4.0.5'                   // skin-support
-implementation 'skin.support:skin-support-appcompat:4.0.5'         // skin-support 基础控件支持
-implementation 'skin.support:skin-support-design:4.0.5'            // skin-support-design material design 控件支持[可选]
-implementation 'skin.support:skin-support-cardview:4.0.5'          // skin-support-cardview CardView 控件支持[可选]
-implementation 'skin.support:skin-support-constraint-layout:4.0.5' // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
-```
-
-*⚠️ 从3.x.x迁移至4.0.5+, 解耦了换肤库对appcompat包的依赖，需要新增以下代码*
-```gradle
-implementation 'skin.support:skin-support-appcompat:4.0.5'         // skin-support 基础控件支持
+implementation 'alps.ui.skin:skin-base:0.0.1'               // skin-base
+implementation 'alps.ui.skin:skin-appcompat:0.0.1'          // skin-appcompat 基础控件支持
+implementation 'alps.ui.skin:skin-material:0.0.1'           // skin-material MaterialDesign 控件支持[可选]
+implementation 'alps.ui.skin:skin-cardview:0.0.1'           // skin-cardview CardView 控件支持[可选]
+implementation 'alps.ui.skin:skin-constraintlayout:0.0.1'   // skin-constraintlayout ConstraintLayout 控件支持[可选]
 ```
 
 在Application的onCreate中初始化
@@ -179,10 +107,9 @@ public void onCreate() {
     super.onCreate();
     SkinCompatManager.withoutActivity(this)
             .addInflater(new SkinAppCompatViewInflater())           // 基础控件换肤初始化
-            .addInflater(new SkinMaterialViewInflater())            // material design 控件换肤初始化[可选]
+            .addInflater(new SkinMaterialViewInflater())            // MaterialDesign 控件换肤初始化[可选]
             .addInflater(new SkinConstraintViewInflater())          // ConstraintLayout 控件换肤初始化[可选]
-            .addInflater(new SkinCardViewInflater())                // CardView v7 控件换肤初始化[可选]
-            .setSkinStatusBarColorEnable(false)                     // 关闭状态栏换肤，默认打开[可选]
+            .addInflater(new SkinCardViewInflater())                // CardView 控件换肤初始化[可选]
             .setSkinWindowBackgroundEnable(false)                   // 关闭windowBackground换肤，默认打开[可选]
             .loadSkin();
 }
@@ -253,7 +180,7 @@ SkinCompatManager.getInstance().restoreDefaultTheme();
 
   // 需要使用https://github.com/hdodenhof/CircleImageView 控件, 并且要支持换肤
 
-  eg: [SkinCompatCircleImageView](third-part-support/circleimageview/src/main/java/skin/support/circleimageview/widget/SkinCompatCircleImageView.java)
+  eg: [SkinCompatCircleImageView](third-part/circleimageview/src/main/java/skin/support/circleimageview/widget/SkinCompatCircleImageView.java)
 
 ### 应用内换肤:
 
@@ -264,7 +191,6 @@ SkinCompatManager.getInstance().restoreDefaultTheme();
 加载应用内皮肤:
 ```java
 SkinCompatManager.getInstance().loadSkin("night", SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN); // 后缀加载
-SkinCompatManager.getInstance().loadSkin("night", SkinCompatManager.SKIN_LOADER_STRATEGY_PREFIX_BUILD_IN); // 前缀加载
 ```
 
 推荐将应用内换肤相关的皮肤资源放到单独的目录中
@@ -351,80 +277,7 @@ SkinCompatManager.withoutActivity(this)
 SkinCompatManager.getInstance().loadSkin("night.skin", null, CustomSDCardLoader.SKIN_LOADER_STRATEGY_SDCARD);
 ```
 
-#### zip包中加载资源
-
-继承自`SkinSDCardLoader`，在`loadSkinInBackground`方法中解压资源，在`getDrawable`等方法中返回加压后的资源。
-
-```java
-public class ZipSDCardLoader extends SkinSDCardLoader {
-    public static final int SKIN_LOADER_STRATEGY_ZIP = Integer.MAX_VALUE - 1;
-
-    @Override
-    public String loadSkinInBackground(Context context, String skinName) {
-        // TODO 解压zip包中的资源，同时可以根据skinName安装皮肤包(.skin)。
-        return super.loadSkinInBackground(context, skinName);
-    }
-
-    @Override
-    protected String getSkinPath(Context context, String skinName) {
-        // TODO 返回皮肤包路径，如果自需要使用zip包，则返回""
-        return new File(SkinFileUtils.getSkinDir(context), skinName).getAbsolutePath();
-    }
-
-    @Override
-    public Drawable getDrawable(Context context, String skinName, int resId) {
-        // TODO 根据resId来判断是否使用zip包中的资源。
-        return super.getDrawable(context, skinName, resId);
-    }
-
-    @Override
-    public int getType() {
-        return SKIN_LOADER_STRATEGY_ZIP;
-    }
-}
-```
-
-*资源加载策略更灵活，不仅仅只有皮肤包，开发者可配置任意资源获取方式(Zip/Apk/Json...)。*
-
-在Application中，添加自定义加载策略:
-
-```java
-SkinCompatManager.withoutActivity(this)
-        .addStrategy(new ZipSDCardLoader());          // 自定义加载策略，加载zip包中的资源
-```
-
-### 动态设置资源
-
-#### [动态设置颜色](demo/skin-app/src/main/java/com/ximsfei/skindemo/picker/ColorPickerActivity.java)
-
-```java
-SkinCompatUserThemeManager.get().addColorState(R.color.colorPrimary, #ffffffff);
-
-SkinCompatUserThemeManager.get().addColorState(R.color.colorPrimary, new ColorState.ColorBuilder().addXxx().build());
-
-// 清除所有已有颜色值。
-SkinCompatUserThemeManager.get().clearColors();
-```
-
-#### [动态设置图片](demo/skin-app/src/main/java/com/ximsfei/skindemo/picker/DrawablePickerActivity.java)
-
-```java
-SkinCompatUserThemeManager.get().addDrawablePath(R.drawable.windowBackground, "／sdcard/DCIM/Camera/xxx.jpg");
-
-// 要换肤的资源id，图片路径，图片旋转角度(默认为0)
-SkinCompatUserThemeManager.get().addDrawablePath(R.drawable.windowBackground, "／sdcard/DCIM/Camera/xxx.jpg", 90);
-
-// 清除所有已有图片路径。
-SkinCompatUserThemeManager.get().clearDrawables();
-```
-
-在设置完颜色及图片后，需要调用`apply()`方法来保存设置。
-
-```java
-SkinCompatUserThemeManager.get().apply();
-```
-
-*资源加载优先级: 用户自定义颜色值-加载策略中的资源-皮肤包资源-应用资源。*
+*资源加载优先级: 加载策略中的资源-应用资源。*
 
 ### 获取当前使用皮肤
 
@@ -435,28 +288,3 @@ https://github.com/ximsfei/Android-skin-support/blob/master/androidx/skin-suppor
 ## 缺点
 
 * 同一个LayoutInflater只能设置一次Factory，容易和同类库产生冲突
-
-## 谁在使用
-
-如果你想提交作品，欢迎提出 [PR](https://github.com/ximsfei/Android-skin-support/tree/master/docs/who-use-it) 或联系[作者](#技术交流)。
-
-<table align="center">
-    <tr align="center">
-        <td><img width="96" height="96" src="https://github.com/ximsfei/Android-skin-support/blob/master/docs/who-use-it/sohunews_explore-icon.png"/></td>
-        <td><img width="96" height="96" src="https://github.com/ximsfei/Android-skin-support/blob/master/docs/who-use-it/vflynote-icon.png"/></td>
-        <td><img width="96" height="96" src="https://github.com/ximsfei/Android-skin-support/blob/master/docs/who-use-it/qoo-app.png"/></td>
-        <td><img width="96" height="96" src="https://github.com/ximsfei/Android-skin-support/blob/master/docs/who-use-it/dwnews.png"/></td>
-    </tr>
-    <tr align="center">
-        <td><b><a href="https://k.sohu.com/">搜狐新闻探索版</a></b></td>
-        <td><b><a href="http://www.iyuji.cn/iyuji/home">讯飞语记</a></b></td>
-        <td><b><a href="https://news.qoo-app.com/">qoo app</a></b></td>
-        <td><b><a href="http://www.dwnews.com/">多维新闻</a></b></td>
-    </tr>
-</table>
-
-## 技术交流
-
-![](https://github.com/ximsfei/Res/blob/master/Android%26%2332%3B%E6%8D%A2%E8%82%A4.png)
-
-## [License MIT](LICENSE)
