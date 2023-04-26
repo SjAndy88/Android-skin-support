@@ -181,8 +181,4 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
         applyTextColorHintResource();
     }
 
-//    public void clearTextColorResId() {
-//        mTextColorResId = INVALID_ID;
-//    }
-
 }

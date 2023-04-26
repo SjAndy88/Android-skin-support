@@ -30,22 +30,6 @@ public class SkinCompatTextView extends AppCompatTextView implements SkinCompatS
         mTextHelper.loadFromAttributes(attrs, defStyleAttr);
     }
 
-//    @Override
-//    public void setTextColor(int color) {
-//        super.setTextColor(color);
-//        if (mTextHelper != null) {
-//            mTextHelper.clearTextColorResId();
-//        }
-//    }
-//
-//    @Override
-//    public void setTextColor(ColorStateList colors) {
-//        super.setTextColor(colors);
-//        if (mTextHelper != null) {
-//            mTextHelper.clearTextColorResId();
-//        }
-//    }
-
     @Override
     public void setBackgroundResource(@DrawableRes int resId) {
         super.setBackgroundResource(resId);
