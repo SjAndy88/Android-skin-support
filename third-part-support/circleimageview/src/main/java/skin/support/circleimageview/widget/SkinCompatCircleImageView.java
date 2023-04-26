@@ -13,9 +13,7 @@ import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatImageHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by pengfengwang on 2017/3/5.
- */
+
 
 public class SkinCompatCircleImageView extends CircleImageView implements SkinCompatSupportable {
     private final SkinCompatImageHelper mImageHelper;

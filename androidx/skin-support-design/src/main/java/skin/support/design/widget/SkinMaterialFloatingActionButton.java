@@ -14,9 +14,7 @@ import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatImageHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by pengfengwang on 2017/3/1.
- */
+
 
 public class SkinMaterialFloatingActionButton extends FloatingActionButton implements SkinCompatSupportable {
 

@@ -19,9 +19,7 @@ import skin.support.annotation.Nullable;
 import skin.support.collection.ArrayMap;
 import skin.support.view.ViewCompat;
 
-/**
- * Created by ximsfei on 17-1-9.
- */
+
 
 public class SkinCompatViewInflater {
     private static final Class<?>[] sConstructorSignature = new Class[]{

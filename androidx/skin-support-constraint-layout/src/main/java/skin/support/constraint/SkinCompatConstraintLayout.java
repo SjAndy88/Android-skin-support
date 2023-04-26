@@ -1,15 +1,14 @@
 package skin.support.constraint;
 
 import android.content.Context;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by pengfengwang on 2017/6/19.
- */
+
 
 public class SkinCompatConstraintLayout extends ConstraintLayout implements SkinCompatSupportable {
     private final SkinCompatBackgroundHelper mBackgroundTintHelper;

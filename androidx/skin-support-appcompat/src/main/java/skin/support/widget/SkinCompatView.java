@@ -4,9 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-/**
- * Created by pengfengwang on 2017/1/13.
- */
+
 
 public class SkinCompatView extends View implements SkinCompatSupportable {
     private final SkinCompatBackgroundHelper mBackgroundTintHelper;

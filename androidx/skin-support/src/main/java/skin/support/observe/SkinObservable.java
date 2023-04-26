@@ -2,9 +2,7 @@ package skin.support.observe;
 
 import java.util.ArrayList;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinObservable {
     private final ArrayList<SkinObserver> observers;

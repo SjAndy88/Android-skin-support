@@ -21,9 +21,7 @@ import java.util.List;
 import skin.support.annotation.Skinable;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by ximsfei on 2017/1/9.
- */
+
 
 @Skinable
 public class MainActivity extends BaseActivity implements SkinCompatSupportable {

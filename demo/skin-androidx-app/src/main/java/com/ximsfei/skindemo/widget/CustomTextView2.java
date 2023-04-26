@@ -10,9 +10,7 @@ import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;
 import skin.support.widget.SkinCompatTextHelper;
 
-/**
- * Created by ximsfei on 2017/1/17.
- */
+
 
 public class CustomTextView2 extends AppCompatTextView implements SkinCompatSupportable {
     private final SkinCompatTextHelper mTextHelper;

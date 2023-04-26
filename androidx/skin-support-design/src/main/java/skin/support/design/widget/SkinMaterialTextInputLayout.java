@@ -19,9 +19,7 @@ import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by ximsfei on 17-3-2.
- */
+
 
 public class SkinMaterialTextInputLayout extends TextInputLayout implements SkinCompatSupportable {
 

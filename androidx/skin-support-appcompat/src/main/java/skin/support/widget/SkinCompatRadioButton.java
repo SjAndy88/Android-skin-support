@@ -8,9 +8,7 @@ import androidx.appcompat.widget.AppCompatRadioButton;
 
 import skin.support.appcompat.R;
 
-/**
- * Created by ximsfei on 17-1-14.
- */
+
 
 public class SkinCompatRadioButton extends AppCompatRadioButton implements SkinCompatSupportable {
     private final SkinCompatTextHelper mTextHelper;

@@ -1,12 +1,10 @@
 package skin.support.content.res;
 
-import android.content.Context;
-
 import static skin.support.content.res.SkinCompatThemeUtils.getResId;
 
-/**
- * Created by ximsfei on 2017/3/25.
- */
+import android.content.Context;
+
+
 
 public class SkinCompatV7ThemeUtils {
 

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-/**
- * Created by pengfengwang on 2017/1/13.
- */
+
 
 public class SkinCompatRelativeLayout extends RelativeLayout implements SkinCompatSupportable {
     private final SkinCompatBackgroundHelper mBackgroundTintHelper;

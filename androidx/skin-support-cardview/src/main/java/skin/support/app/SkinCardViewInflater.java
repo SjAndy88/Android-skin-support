@@ -1,15 +1,14 @@
 package skin.support.app;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import skin.support.widget.SkinCompatCardView;
 
-/**
- * Created by ximsf on 2017/3/5.
- */
+
 
 public class SkinCardViewInflater implements SkinLayoutInflater {
     @Override

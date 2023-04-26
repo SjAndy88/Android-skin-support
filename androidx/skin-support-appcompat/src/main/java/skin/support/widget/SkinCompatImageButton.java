@@ -7,9 +7,7 @@ import androidx.annotation.DrawableRes;
 import androidx.appcompat.R;
 import androidx.appcompat.widget.AppCompatImageButton;
 
-/**
- * Created by ximsfei on 17-1-13.
- */
+
 
 public class SkinCompatImageButton extends AppCompatImageButton implements SkinCompatSupportable {
     private final SkinCompatBackgroundHelper mBackgroundTintHelper;

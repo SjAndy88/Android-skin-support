@@ -1,20 +1,19 @@
 package skin.support.widget;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import androidx.cardview.widget.CardView;
 import android.util.AttributeSet;
+
+import androidx.cardview.widget.CardView;
 
 import skin.support.cardview.R;
 import skin.support.content.res.SkinCompatResources;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
 
-/**
- * Created by ximsfei on 2017/3/5.
- */
 
 public class SkinCompatCardView extends CardView implements SkinCompatSupportable {
     private static final int[] COLOR_BACKGROUND_ATTR = {android.R.attr.colorBackground};

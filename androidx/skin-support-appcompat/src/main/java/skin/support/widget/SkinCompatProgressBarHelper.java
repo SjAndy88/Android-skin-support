@@ -22,9 +22,7 @@ import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatVectorResources;
 import skin.support.utils.SkinCompatVersionUtils;
 
-/**
- * Created by ximsfei on 2017/1/20.
- */
+
 
 public class SkinCompatProgressBarHelper extends SkinCompatHelper {
 

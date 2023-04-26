@@ -6,9 +6,7 @@ import android.text.TextUtils;
 
 import java.io.File;
 
-/**
- * Created by ximsfei on 17-1-10.
- */
+
 
 public class SkinFileUtils {
     public static String getSkinDir(Context context) {

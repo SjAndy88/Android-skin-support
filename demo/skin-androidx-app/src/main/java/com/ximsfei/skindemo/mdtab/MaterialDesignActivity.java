@@ -16,9 +16,7 @@ import com.ximsfei.skindemo.tab.fragment.TabFragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ximsfei on 17-3-1.
- */
+
 
 public class MaterialDesignActivity extends BaseActivity {
 

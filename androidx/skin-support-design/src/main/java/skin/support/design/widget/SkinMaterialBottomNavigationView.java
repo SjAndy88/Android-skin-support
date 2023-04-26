@@ -18,9 +18,7 @@ import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by ximsfei on 17-3-1.
- */
+
 
 public class SkinMaterialBottomNavigationView extends BottomNavigationView implements SkinCompatSupportable {
 

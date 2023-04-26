@@ -7,9 +7,7 @@ import androidx.appcompat.widget.AppCompatSeekBar;
 
 import skin.support.appcompat.R;
 
-/**
- * Created by ximsfei on 17-1-21.
- */
+
 
 public class SkinCompatSeekBar extends AppCompatSeekBar implements SkinCompatSupportable {
     private final SkinCompatSeekBarHelper mSkinCompatSeekBarHelper;

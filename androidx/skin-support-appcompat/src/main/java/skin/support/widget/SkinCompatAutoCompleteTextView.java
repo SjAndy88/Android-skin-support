@@ -13,9 +13,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 2017/1/13.
- */
+
 
 public class SkinCompatAutoCompleteTextView extends AppCompatAutoCompleteTextView implements SkinCompatSupportable {
     private static final int[] TINT_ATTRS = {

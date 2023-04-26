@@ -14,9 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ximsfei.skindemo.R;
 
-/**
- * Created by ximsfei on 17-1-14.
- */
+
 
 public class FirstFragment extends Fragment {
     @Nullable

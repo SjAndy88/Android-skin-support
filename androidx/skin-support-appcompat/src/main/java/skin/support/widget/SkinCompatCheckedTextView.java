@@ -12,9 +12,7 @@ import androidx.appcompat.widget.AppCompatCheckedTextView;
 import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 17-1-14.
- */
+
 
 public class SkinCompatCheckedTextView extends AppCompatCheckedTextView implements SkinCompatSupportable {
 

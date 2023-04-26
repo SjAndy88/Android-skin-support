@@ -6,9 +6,7 @@ import android.util.AttributeSet;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatImageView;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinCompatImageView extends AppCompatImageView implements SkinCompatSupportable {
     private final SkinCompatBackgroundHelper mBackgroundTintHelper;

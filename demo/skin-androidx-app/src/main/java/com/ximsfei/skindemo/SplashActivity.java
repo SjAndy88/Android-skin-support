@@ -24,9 +24,7 @@ import com.ximsfei.skindemo.mdtab.MaterialDesignActivity;
 import com.ximsfei.skindemo.tab.MainActivity;
 import com.ximsfei.skindemo.window.WindowManagerActivity;
 
-/**
- * Created by ximsf on 2017/3/8.
- */
+
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends BaseActivity {

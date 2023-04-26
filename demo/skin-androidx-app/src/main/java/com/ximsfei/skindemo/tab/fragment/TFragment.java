@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ximsfei.skindemo.R;
 
-/**
- * Created by ximsfei on 17-1-14.
- */
+
 
 public class TFragment extends Fragment {
 

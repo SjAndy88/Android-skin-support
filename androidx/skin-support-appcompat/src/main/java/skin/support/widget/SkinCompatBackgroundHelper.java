@@ -12,9 +12,7 @@ import androidx.core.view.ViewCompat;
 import skin.support.R;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinCompatBackgroundHelper extends SkinCompatHelper {
     private final View mView;

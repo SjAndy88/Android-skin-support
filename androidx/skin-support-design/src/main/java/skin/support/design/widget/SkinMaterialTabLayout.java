@@ -13,9 +13,7 @@ import skin.support.design.R;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by ximsfei on 17-1-14.
- */
+
 
 public class SkinMaterialTabLayout extends TabLayout implements SkinCompatSupportable {
 

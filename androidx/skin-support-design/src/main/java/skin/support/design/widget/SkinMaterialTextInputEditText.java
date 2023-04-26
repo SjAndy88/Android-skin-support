@@ -14,9 +14,7 @@ import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;
 import skin.support.widget.SkinCompatTextHelper;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinMaterialTextInputEditText extends TextInputEditText implements SkinCompatSupportable {
 

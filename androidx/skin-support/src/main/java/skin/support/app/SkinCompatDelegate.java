@@ -14,9 +14,7 @@ import skin.support.SkinCompatManager;
 import skin.support.annotation.NonNull;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by ximsfei on 2017/1/9.
- */
+
 
 public class SkinCompatDelegate implements LayoutInflater.Factory2 {
     private SkinCompatViewInflater mSkinCompatViewInflater;

@@ -12,9 +12,7 @@ import com.ximsfei.skindemo.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Created by ximsfei on 17-3-2.
- */
+
 
 @SuppressWarnings("unused")
 public class AvatarImageBehavior extends CoordinatorLayout.Behavior<CircleImageView> {

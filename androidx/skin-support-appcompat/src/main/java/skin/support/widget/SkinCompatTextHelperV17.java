@@ -11,9 +11,7 @@ import androidx.annotation.DrawableRes;
 import skin.support.R;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by pengfengwang on 2017/3/8.
- */
+
 
 public class SkinCompatTextHelperV17 extends SkinCompatTextHelper {
     private int mDrawableStartResId = INVALID_ID;

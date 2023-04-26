@@ -3,9 +3,7 @@ package skin.support.widget;
 
 import skin.support.SkinCompatManager;
 
-/**
- * Created by ximsfei on 2017/1/13.
- */
+
 
 public abstract class SkinCompatHelper {
     protected static final String SYSTEM_ID_PREFIX = "1";

@@ -6,9 +6,7 @@ import android.util.AttributeSet;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatTextView;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinCompatTextView extends AppCompatTextView implements SkinCompatSupportable {
     private final SkinCompatTextHelper mTextHelper;

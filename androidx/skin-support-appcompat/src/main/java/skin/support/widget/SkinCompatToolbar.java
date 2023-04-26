@@ -14,9 +14,7 @@ import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 17-1-12.
- */
+
 
 public class SkinCompatToolbar extends Toolbar implements SkinCompatSupportable {
     private int mTitleTextColorResId = INVALID_ID;

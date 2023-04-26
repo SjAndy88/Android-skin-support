@@ -13,9 +13,7 @@ import skin.support.R;
 import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinCompatTextHelper extends SkinCompatHelper {
 

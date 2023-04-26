@@ -4,9 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
-/**
- * Created by ximsfei on 2017/1/19.
- */
+
 
 public class SkinCompatProgressBar extends ProgressBar implements SkinCompatSupportable {
     private final SkinCompatProgressBarHelper mSkinCompatProgressBarHelper;

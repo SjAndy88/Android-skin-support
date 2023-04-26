@@ -1,9 +1,10 @@
 package skin.support.design.app;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import skin.support.app.SkinLayoutInflater;
 import skin.support.design.widget.SkinMaterialAppBarLayout;
@@ -16,9 +17,7 @@ import skin.support.design.widget.SkinMaterialTabLayout;
 import skin.support.design.widget.SkinMaterialTextInputEditText;
 import skin.support.design.widget.SkinMaterialTextInputLayout;
 
-/**
- * Created by ximsfei on 2017/1/13.
- */
+
 public class SkinMaterialViewInflater implements SkinLayoutInflater {
     @Override
     public View createView(@NonNull Context context, final String name, @NonNull AttributeSet attrs) {

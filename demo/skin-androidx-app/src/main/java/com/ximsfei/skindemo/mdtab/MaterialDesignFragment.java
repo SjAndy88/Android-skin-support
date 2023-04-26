@@ -15,9 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputLayout;
 import com.ximsfei.skindemo.R;
 
-/**
- * Created by ximsfei on 17-3-2.
- */
+
 
 public class MaterialDesignFragment extends Fragment {
     private View mView;

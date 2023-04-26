@@ -5,9 +5,7 @@ import android.util.AttributeSet;
 
 import skin.support.widget.SkinCompatTextView;
 
-/**
- * Created by ximsfei on 2017/1/17.
- */
+
 
 public class CustomTextView extends SkinCompatTextView {
     public CustomTextView(Context context) {

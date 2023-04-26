@@ -5,12 +5,9 @@ import android.util.AttributeSet;
 import android.widget.SeekBar;
 
 import skin.support.appcompat.R;
-import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 17-1-21.
- */
+
 public class SkinCompatSeekBarHelper extends SkinCompatProgressBarHelper {
     private final SeekBar mView;
 

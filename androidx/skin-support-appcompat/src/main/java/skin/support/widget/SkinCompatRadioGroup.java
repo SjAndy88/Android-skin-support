@@ -4,9 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RadioGroup;
 
-/**
- * Created by ximsf on 2017/3/23.
- */
+
 
 public class SkinCompatRadioGroup extends RadioGroup implements SkinCompatSupportable {
     private final SkinCompatBackgroundHelper mBackgroundTintHelper;

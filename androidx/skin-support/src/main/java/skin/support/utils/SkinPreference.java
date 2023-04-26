@@ -5,9 +5,7 @@ import android.content.SharedPreferences;
 
 import skin.support.SkinCompatManager;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinPreference {
     private static final String FILE_NAME = "meta-data";

@@ -8,9 +8,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by ximsfei on 2017/1/13.
- */
+
 
 public class SkinMaterialAppBarLayout extends AppBarLayout implements SkinCompatSupportable {
 

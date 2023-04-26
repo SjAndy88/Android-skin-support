@@ -7,9 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-/**
- * Created by ximsfei on 17-1-7.
- */
+
 
 public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
 

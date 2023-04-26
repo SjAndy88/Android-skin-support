@@ -16,9 +16,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 17-1-21.
- */
+
 
 public class SkinCompatSpinner extends AppCompatSpinner implements SkinCompatSupportable {
     private static final String TAG = SkinCompatSpinner.class.getSimpleName();

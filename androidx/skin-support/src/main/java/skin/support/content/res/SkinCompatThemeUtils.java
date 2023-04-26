@@ -1,5 +1,7 @@
 package skin.support.content.res;
 
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -8,11 +10,7 @@ import android.util.TypedValue;
 
 import skin.support.graphics.ColorUtils;
 
-import static skin.support.widget.SkinCompatHelper.INVALID_ID;
 
-/**
- * Created by ximsfei on 2017/3/25.
- */
 
 public class SkinCompatThemeUtils {
 

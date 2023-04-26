@@ -12,9 +12,7 @@ import skin.support.constraint.app.SkinConstraintViewInflater;
 import skin.support.design.app.SkinMaterialViewInflater;
 import skin.support.utils.Slog;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class App extends Application {
     @Override

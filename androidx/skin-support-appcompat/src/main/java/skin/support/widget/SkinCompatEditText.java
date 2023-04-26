@@ -9,9 +9,7 @@ import androidx.annotation.DrawableRes;
 import androidx.appcompat.R;
 import androidx.appcompat.widget.AppCompatEditText;
 
-/**
- * Created by ximsfei on 2017/1/10.
- */
+
 
 public class SkinCompatEditText extends AppCompatEditText implements SkinCompatSupportable {
     private final SkinCompatTextHelper mTextHelper;

@@ -12,9 +12,7 @@ import skin.support.R;
 import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatVectorResources;
 
-/**
- * Created by ximsfei on 2017/1/12.
- */
+
 public class SkinCompatImageHelper extends SkinCompatHelper {
     private final ImageView mView;
     private int mSrcResId = INVALID_ID;

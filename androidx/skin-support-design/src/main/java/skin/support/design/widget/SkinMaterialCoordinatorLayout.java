@@ -8,9 +8,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;
 
-/**
- * Created by ximsf on 2017/3/5.
- */
+
 
 public class SkinMaterialCoordinatorLayout extends CoordinatorLayout implements SkinCompatSupportable {
 

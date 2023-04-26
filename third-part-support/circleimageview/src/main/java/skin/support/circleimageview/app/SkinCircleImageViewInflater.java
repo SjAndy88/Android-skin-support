@@ -7,9 +7,7 @@ import android.view.View;
 import skin.support.app.SkinLayoutInflater;
 import skin.support.circleimageview.widget.SkinCompatCircleImageView;
 
-/**
- * Created by ximsfei on 2017/3/5.
- */
+
 
 public class SkinCircleImageViewInflater implements SkinLayoutInflater {
     @Override

@@ -8,9 +8,7 @@ import androidx.appcompat.widget.AppCompatCheckBox;
 
 import skin.support.appcompat.R;
 
-/**
- * Created by ximsfei on 17-1-14.
- */
+
 
 public class SkinCompatCheckBox extends AppCompatCheckBox implements SkinCompatSupportable {
     private final SkinCompatCompoundButtonHelper mCompoundButtonHelper;
