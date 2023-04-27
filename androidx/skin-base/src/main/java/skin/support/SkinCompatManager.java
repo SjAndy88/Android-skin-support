@@ -222,13 +222,11 @@ public class SkinCompatManager extends SkinObservable {
      * @param inflater 在{@link skin.support.app.SkinCompatViewInflater#createView(View, String, Context, AttributeSet)}方法中最先调用.
      * @return
      */
-    @Deprecated
     public SkinCompatManager addHookInflater(SkinLayoutInflater inflater) {
         mHookInflaters.add(inflater);
         return this;
     }
 
-    @Deprecated
     public List<SkinLayoutInflater> getHookInflaters() {
         return mHookInflaters;
     }
