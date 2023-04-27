@@ -1,13 +1,13 @@
 // DEMO for androidx
-include ':demo:skin-sample'
-include ':demo:skin-night'
+include ':demo:uiskin-sample'
+include ':demo:uiskin-night'
 
 // for androidx
-include ':androidx:skin-base'
-include ':androidx:skin-appcompat'
-include ':androidx:skin-material'
-include ':androidx:skin-cardview'
-include ':androidx:skin-constraintlayout'
+include ':androidx:uiskin-core'
+include ':androidx:uiskin-appcompat'
+include ':androidx:uiskin-material'
+include ':androidx:uiskin-cardview'
+include ':androidx:uiskin-constraintlayout'
 
 // for third part
 include ':third-part:circleimageview'

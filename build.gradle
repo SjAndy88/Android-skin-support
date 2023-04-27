@@ -1,29 +1,104 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext {
+        MAVEN_USER = "$artifactory_username_cn"
+        MAVEN_PWD = "$artifactory_password_cn"
+    }
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven {
+            allowInsecureProtocol = true
+            url = uri("http://artifactory-alps.nioint.com:8082/artifactory/alpsdc-maven-virtual/")
+        }
+        maven {
+            credentials {
+                username 'oceanpark_viewer'
+                password 'AKCp8kq2rfiaMbmaK9RdT8qHviLqvbLUetYTrJx8Hbcb6ZeG8wHFdFoza6KJXnQUUWE6DQRP7'
+            }
+            url = 'http://oceanpark.nioint.com/artifactory/maven'
+            allowInsecureProtocol = true
+        }
+        maven {
+            credentials {
+                username 'dc-view.s'
+                password 'AKCp8mYUzQfFKDKSXZN5YBv4YWZrZDfswWjBvuP4baW4RchUJBgnctBixnwACaiHifLNt2MAY'
+            }
+            url = 'http://oceanpark.nioint.com/artifactory/maven'
+            allowInsecureProtocol = true
+        }
+        maven {
+            url "https://artifactory-cn.nevint.com:443/artifactory/alpsdc-maven-local"
+            credentials {
+                username "$rootProject.MAVEN_USER" // 仓库发布用户名
+                password "$rootProject.MAVEN_PWD" // 仓库发布用户密码
+            }
+        }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        gradlePluginPortal()
+        maven{
+            allowInsecureProtocol = true
+            url "https://artifactory.nioint.com/artifactory/dd-maven-public-virtual/"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.2'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.alps.quality:com.alps.quality.gradle.plugin:1.0.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
 allprojects {
+    ext {
+        MAVEN_USER = "$artifactory_username_cn"
+        MAVEN_PWD = "$artifactory_password_cn"
+    }
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/public/' }
-        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven {
+            allowInsecureProtocol = true
+            url = uri("http://artifactory-alps.nioint.com:8082/artifactory/alpsdc-maven-virtual/")
+        }
+        maven {
+            credentials {
+                username 'oceanpark_viewer'
+                password 'AKCp8kq2rfiaMbmaK9RdT8qHviLqvbLUetYTrJx8Hbcb6ZeG8wHFdFoza6KJXnQUUWE6DQRP7'
+            }
+            url = 'http://oceanpark.nioint.com/artifactory/maven'
+            allowInsecureProtocol = true
+        }
+        maven {
+            credentials {
+                username 'dc-view.s'
+                password 'AKCp8mYUzQfFKDKSXZN5YBv4YWZrZDfswWjBvuP4baW4RchUJBgnctBixnwACaiHifLNt2MAY'
+            }
+            url = 'http://oceanpark.nioint.com/artifactory/maven'
+            allowInsecureProtocol = true
+        }
+        maven {
+            url "https://artifactory-cn.nevint.com:443/artifactory/alpsdc-maven-local"
+            credentials {
+                username "$rootProject.MAVEN_USER" // 仓库发布用户名
+                password "$rootProject.MAVEN_PWD" // 仓库发布用户密码
+            }
+        }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        gradlePluginPortal()
+        maven{
+            allowInsecureProtocol = true
+            url "https://artifactory.nioint.com/artifactory/dd-maven-public-virtual/"
+        }
     }
 }
 
@@ -48,4 +123,25 @@ ext {
     skinAndroidSupportSkinGroup = "skin.support"
     skinAndroidXVersion = "4.0.5"
     skinAndroidXSkinGroup = "skin.support"
+}
+
+apply plugin: 'com.alps.quality'
+
+codeQuality {
+    checkstyle {
+        exclude = [".*demo\\/.*"]
+    }
+    cpd {
+        exclude = [".*demo\\/.*"]
+        exclude = [".*androidx\\/.*"]
+    }
+    detekt {
+        exclude = [".*demo\\/.*"]
+    }
+    pmd {
+        exclude = [".*demo\\/.*"]
+    }
+    lint {
+        exclude = [".*demo\\/.*"]
+    }
 }

@@ -20,8 +20,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'de.hdodenhof:circleimageview:2.1.0'
-    implementation project(':androidx:skin-base')
-    implementation project(':androidx:skin-appcompat')
+    implementation project(':androidx:uiskin-core')
+    implementation project(':androidx:uiskin-appcompat')
 }
 
 ext {

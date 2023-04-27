@@ -39,7 +39,7 @@ SkinCompatManager.withoutActivity(this).loadSkin();
 * [x] 支持代码中设置的资源换肤。
 * [x] 默认支持大部分基础控件，Material Design换肤。
 * [x] 支持多种加载策略([应用内](#应用内换肤)/[插件式](#插件式换肤)/[自定义sdcard路径](#自定义加载策略))。
-* [x] 资源加载优先级: 加载策略中的资源-应用资源。
+* [x] 资源加载优先级: 加载策略中的资源-插件式换肤/应用内换肤-应用资源。
 * [x] 支持定制化，选择需要的模块加载。
 * [x] 支持矢量图(vector/svg)换肤。
 * [x] 支持AndroidX
@@ -161,13 +161,13 @@ SkinCompatManager.getInstance().restoreDefaultTheme();
 
   // 需要换肤AutoCompleteTextView的R.attr.popupBackground属性
 
-  eg: [SkinCompatAutoCompleteTextView](androidx/skin-appcompat/src/main/java/skin/support/widget/SkinCompatAutoCompleteTextView.java)
+  eg: [SkinCompatAutoCompleteTextView](androidx/skin-appcompat/src/main/java/alps/uiskin/widget/SkinCompatAutoCompleteTextView.java)
 
 * 需要使用第三方库控件怎么办
 
   // 需要使用https://github.com/hdodenhof/CircleImageView 控件, 并且要支持换肤
 
-  eg: [SkinCompatCircleImageView](third-part/circleimageview/src/main/java/skin/support/circleimageview/widget/SkinCompatCircleImageView.java)
+  eg: [SkinCompatCircleImageView](third-part/circleimageview/src/main/java/alps/uiskin/circleimageview/widget/SkinCompatCircleImageView.java)
 
 ### 应用内换肤:
 
@@ -195,8 +195,8 @@ eg: [res-night](demo/skin-sample/src/main/res-night)
 
 例如:
 ```xml
-宿主包名: com.skin.demo
-夜间模式: com.skin.demo.night
+宿主包名: uiskin.demo
+夜间模式: uiskin.demo.night
 ```
 
 #### 将需要换肤的资源放到res目录下(同名资源)
@@ -264,11 +264,11 @@ SkinCompatManager.withoutActivity(this)
 SkinCompatManager.getInstance().loadSkin("night.skin", null, CustomSDCardLoader.SKIN_LOADER_STRATEGY_SDCARD);
 ```
 
-*资源加载优先级: 加载策略中的资源-应用资源。*
+*资源加载优先级: 加载策略中的资源-插件式换肤/应用内换肤-应用资源。*
 
 ### 获取当前使用皮肤
 
-[SkinPreference](androidx/skin-base/src/main/java/skin/support/utils/SkinPreference.java)
+[SkinPreference](androidx/skin-base/src/main/java/alps/uiskin/utils/SkinPreference.java)
 
 ## 缺点
 

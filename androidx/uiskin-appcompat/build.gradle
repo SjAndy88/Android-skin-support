@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res-alertdialog']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation project(':androidx:uiskin-core')
+}
+
+ext {
+    publishVersion = rootProject.skinAndroidXVersion
+    publishGroup = rootProject.skinAndroidXSkinGroup
+    moduleName = 'skin-appcompat'
+    descContent = 'UI Skin 基础控件换肤支持包'
+}
