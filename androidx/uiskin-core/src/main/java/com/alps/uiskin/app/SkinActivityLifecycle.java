@@ -210,4 +210,5 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
             mMarkNeedUpdate = false;
         }
     }
+
 }

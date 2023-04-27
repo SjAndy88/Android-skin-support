@@ -28,7 +28,7 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.WeakHashMap;
 
-public class SkinCompatUserThemeManager {
+class SkinCompatUserThemeManager {
     private static final String TAG = "SkinCompatUserThemeManager";
     private static final String KEY_TYPE = "type";
     private static final String KEY_TYPE_COLOR = "color";
