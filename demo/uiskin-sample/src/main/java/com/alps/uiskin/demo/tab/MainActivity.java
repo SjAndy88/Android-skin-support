@@ -3,6 +3,8 @@ package com.alps.uiskin.demo.tab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -60,6 +62,10 @@ public class MainActivity extends BaseActivity implements SkinCompatSupportable 
         TabFragmentPagerAdapter mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list, listTitle);
         viewPager.setAdapter(mTabFragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public void onImgClick(View view) {
+        Toast.makeText(view.getContext(), "被点击了", Toast.LENGTH_SHORT).show();
     }
 
     @Override

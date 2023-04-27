@@ -3,7 +3,6 @@ package com.alps.uiskin.app;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.View;
@@ -18,7 +17,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
-
 
 
 public class SkinCompatViewInflater {
@@ -117,11 +115,9 @@ public class SkinCompatViewInflater {
     private void checkOnClickListener(View view, AttributeSet attrs) {
         final Context context = view.getContext();
 
-        if (!(context instanceof ContextWrapper) ||
-                (Build.VERSION.SDK_INT >= 15 && !ViewCompat.hasOnClickListeners(view))) {
-            // Skip our compat functionality if: the Context isn't a ContextWrapper, or
-            // the view doesn't have an OnClickListener (we can only rely on this on API 15+ so
-            // always use our compat code on older devices)
+        if (!(context instanceof ContextWrapper) || !ViewCompat.hasOnClickListeners(view)) {
+            // Skip our compat functionality if: the Context isn't a ContextWrapper,
+            // or the view doesn't have an OnClickListener
             return;
         }
 

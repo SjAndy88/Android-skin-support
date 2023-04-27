@@ -52,9 +52,11 @@
         android:src="@mipmap/ic_launcher" />
 
     <ImageView
+        android:id="@+id/click_img"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:src="@drawable/svg_weather"
+        android:onClick="onImgClick"
         app:tint="@color/circle_border_color" />
 
     <ImageView
