@@ -16,6 +16,7 @@ public class SkinCompatBackgroundHelper extends SkinCompatHelper {
     private final View mView;
 
     private int mBackgroundResId = INVALID_ID;
+    private int mForegroundResId = INVALID_ID;
 
     public SkinCompatBackgroundHelper(View view) {
         mView = view;
@@ -27,6 +28,10 @@ public class SkinCompatBackgroundHelper extends SkinCompatHelper {
             if (a.hasValue(R.styleable.SkinBackgroundHelper_android_background)) {
                 mBackgroundResId = a.getResourceId(
                         R.styleable.SkinBackgroundHelper_android_background, INVALID_ID);
+            }
+            if (a.hasValue(R.styleable.SkinBackgroundHelper_android_foreground)) {
+                mForegroundResId = a.getResourceId(
+                        R.styleable.SkinBackgroundHelper_android_foreground, INVALID_ID);
             }
         } finally {
             a.recycle();
@@ -46,21 +51,37 @@ public class SkinCompatBackgroundHelper extends SkinCompatHelper {
         if (mBackgroundResId == INVALID_ID) {
             return;
         }
-        ColorFilter filter = null;
+        ColorFilter bgFilter = null;
         if (mView.getBackground() != null) {
-            filter = mView.getBackground().getColorFilter();
+            bgFilter = mView.getBackground().getColorFilter();
         }
-        Drawable drawable = SkinCompatVectorResources.getDrawableCompat(mView.getContext(), mBackgroundResId);
-        if (drawable != null) {
+        Drawable bgDrawable = SkinCompatVectorResources.getDrawableCompat(mView.getContext(), mBackgroundResId);
+        if (bgDrawable != null) {
             int paddingLeft = mView.getPaddingLeft();
             int paddingTop = mView.getPaddingTop();
             int paddingRight = mView.getPaddingRight();
             int paddingBottom = mView.getPaddingBottom();
-            ViewCompat.setBackground(mView, drawable);
+            ViewCompat.setBackground(mView, bgDrawable);
             mView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
         }
-        if (filter != null) {
-            mView.getBackground().setColorFilter(filter);
+        if (bgFilter != null) {
+            mView.getBackground().setColorFilter(bgFilter);
+        }
+
+        mForegroundResId = checkResourceId(mForegroundResId);
+        if (mForegroundResId == INVALID_ID) {
+            return;
+        }
+        ColorFilter fgFilter = null;
+        if (mView.getForeground() != null) {
+            fgFilter = mView.getForeground().getColorFilter();
+        }
+        Drawable fgDrawable = SkinCompatVectorResources.getDrawableCompat(mView.getContext(), mForegroundResId);
+        if (fgDrawable != null) {
+            mView.setForeground(fgDrawable);
+        }
+        if (fgFilter != null) {
+            mView.getForeground().setColorFilter(fgFilter);
         }
     }
 }

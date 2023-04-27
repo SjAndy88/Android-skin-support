@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="SkinBackgroundHelper">
         <attr name="android:background" />
+        <attr name="android:foreground" />
     </declare-styleable>
 
     <declare-styleable name="SkinCompatImageView">

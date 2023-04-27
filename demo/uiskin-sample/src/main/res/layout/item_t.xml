@@ -4,5 +4,7 @@
     android:layout_height="?attr/actionBarSize"
     android:background="@color/t2_6_background"
     android:gravity="center"
+    android:foreground="@color/fg_color_selector"
     android:orientation="vertical"
+    android:clickable="true"
     android:textColor="@color/text_color" />
