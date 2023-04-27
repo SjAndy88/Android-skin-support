@@ -1,14 +1,17 @@
 package com.alps.uiskin.widget;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
+import androidx.core.widget.TextViewCompat;
 
 import com.alps.uiskin.appcompat.R;
+import com.alps.uiskin.content.res.SkinCompatResources;
 import com.alps.uiskin.content.res.SkinCompatVectorResources;
 
 
@@ -26,12 +29,20 @@ public class SkinCompatTextHelperV17 extends SkinCompatTextHelper {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SkinCompatTextHelper,
                 defStyleAttr, 0);
-        if (a.hasValue(R.styleable.SkinCompatTextHelper_android_drawableStart)) {
-            mDrawableStartResId = a.getResourceId(R.styleable.SkinCompatTextHelper_android_drawableStart, INVALID_ID);
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableStart)) {
+            mDrawableStartResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableStart, INVALID_ID);
             mDrawableStartResId = SkinCompatHelper.checkResourceId(mDrawableStartResId);
         }
-        if (a.hasValue(R.styleable.SkinCompatTextHelper_android_drawableEnd)) {
-            mDrawableEndResId = a.getResourceId(R.styleable.SkinCompatTextHelper_android_drawableEnd, INVALID_ID);
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableStartCompat)) {
+            mDrawableStartResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableStartCompat, INVALID_ID);
+            mDrawableStartResId = SkinCompatHelper.checkResourceId(mDrawableStartResId);
+        }
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableEnd)) {
+            mDrawableEndResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableEnd, INVALID_ID);
+            mDrawableEndResId = SkinCompatHelper.checkResourceId(mDrawableEndResId);
+        }
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableEndCompat)) {
+            mDrawableEndResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableEndCompat, INVALID_ID);
             mDrawableEndResId = SkinCompatHelper.checkResourceId(mDrawableEndResId);
         }
         a.recycle();
@@ -87,6 +98,11 @@ public class SkinCompatTextHelperV17 extends SkinCompatTextHelper {
                 || mDrawableStartResId != INVALID_ID
                 || mDrawableEndResId != INVALID_ID) {
             mView.setCompoundDrawablesWithIntrinsicBounds(drawableStart, drawableTop, drawableEnd, drawableBottom);
+        }
+        mDrawableTintResId = checkResourceId(mDrawableTintResId);
+        if (mDrawableTintResId != INVALID_ID) {
+            ColorStateList tintList = SkinCompatResources.getColorStateList(mView.getContext(), mDrawableTintResId);
+            TextViewCompat.setCompoundDrawableTintList(mView, tintList);
         }
     }
 }

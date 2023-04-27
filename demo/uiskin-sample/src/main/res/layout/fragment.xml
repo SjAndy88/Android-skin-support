@@ -100,11 +100,12 @@
             android:text="三"
             android:textColor="@drawable/color_selector" />
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            app:drawableTint="@color/tabIndicator"
             android:drawableTop="@drawable/drawable_bottom_selector"
             android:gravity="center_horizontal"
             android:text="四"

@@ -17,8 +17,15 @@
         <attr name="android:drawableTop" />
         <attr name="android:drawableRight" />
         <attr name="android:drawableBottom" />
-        <attr name="android:drawableStart" />
-        <attr name="android:drawableEnd" />
+        <attr name="drawableStart" />
+        <attr name="drawableEnd" />
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableBottomCompat" />
+        <attr name="drawableStartCompat" />
+        <attr name="drawableEndCompat" />
+        <attr name="drawableTint" />
         <attr name="android:textAppearance" />
     </declare-styleable>
 

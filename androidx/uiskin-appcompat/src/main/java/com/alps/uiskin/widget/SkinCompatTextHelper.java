@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
+import androidx.core.widget.TextViewCompat;
 
 import com.alps.uiskin.appcompat.R;
 import com.alps.uiskin.content.res.SkinCompatResources;
@@ -28,6 +29,7 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
     protected int mDrawableLeftResId = INVALID_ID;
     protected int mDrawableRightResId = INVALID_ID;
     protected int mDrawableTopResId = INVALID_ID;
+    protected int mDrawableTintResId = INVALID_ID;
 
     public SkinCompatTextHelper(TextView view) {
         mView = view;
@@ -43,14 +45,29 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
         if (a.hasValue(R.styleable.SkinCompatTextHelper_android_drawableLeft)) {
             mDrawableLeftResId = a.getResourceId(R.styleable.SkinCompatTextHelper_android_drawableLeft, INVALID_ID);
         }
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableLeftCompat)) {
+            mDrawableLeftResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableLeftCompat, INVALID_ID);
+        }
         if (a.hasValue(R.styleable.SkinCompatTextHelper_android_drawableTop)) {
             mDrawableTopResId = a.getResourceId(R.styleable.SkinCompatTextHelper_android_drawableTop, INVALID_ID);
+        }
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableTopCompat)) {
+            mDrawableTopResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableTopCompat, INVALID_ID);
         }
         if (a.hasValue(R.styleable.SkinCompatTextHelper_android_drawableRight)) {
             mDrawableRightResId = a.getResourceId(R.styleable.SkinCompatTextHelper_android_drawableRight, INVALID_ID);
         }
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableRightCompat)) {
+            mDrawableRightResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableRightCompat, INVALID_ID);
+        }
         if (a.hasValue(R.styleable.SkinCompatTextHelper_android_drawableBottom)) {
             mDrawableBottomResId = a.getResourceId(R.styleable.SkinCompatTextHelper_android_drawableBottom, INVALID_ID);
+        }
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableBottomCompat)) {
+            mDrawableBottomResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableBottomCompat, INVALID_ID);
+        }
+        if (a.hasValue(R.styleable.SkinCompatTextHelper_drawableTint)) {
+            mDrawableTintResId = a.getResourceId(R.styleable.SkinCompatTextHelper_drawableTint, INVALID_ID);
         }
         a.recycle();
 
@@ -164,6 +181,11 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
                 || mDrawableRightResId != INVALID_ID
                 || mDrawableBottomResId != INVALID_ID) {
             mView.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
+        }
+        mDrawableTintResId = checkResourceId(mDrawableTintResId);
+        if (mDrawableTintResId != INVALID_ID) {
+            ColorStateList tintList = SkinCompatResources.getColorStateList(mView.getContext(), mDrawableTintResId);
+            TextViewCompat.setCompoundDrawableTintList(mView, tintList);
         }
     }
 
