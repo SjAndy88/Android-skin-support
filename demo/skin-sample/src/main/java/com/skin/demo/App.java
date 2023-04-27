@@ -2,6 +2,7 @@ package com.skin.demo;
 
 import android.app.Application;
 
+import com.llk.reflection.JJReflection;
 import com.skin.demo.loader.CustomSDCardLoader;
 
 import skin.support.SkinCompatManager;
@@ -18,6 +19,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        JJReflection.apiExemptions();
+
         // 框架换肤日志打印
         Slog.DEBUG = BuildConfig.DEBUG;
         SkinCompatManager.withoutActivity(this)

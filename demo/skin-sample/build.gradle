@@ -45,4 +45,6 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:${rootProject.glideVersion}"
     annotationProcessor "com.github.bumptech.glide:compiler:${rootProject.glideVersion}"
+    
+    implementation 'com.github.OBaKai:JJReflection:1.1'
 }

@@ -9,6 +9,7 @@ import androidx.annotation.DrawableRes;
 
 public class SkinCompatScrollView extends ScrollView implements SkinCompatSupportable {
     private final SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private final SkinCompatScrollBarHelper mScrollBarHelper;
 
     public SkinCompatScrollView(Context context) {
         this(context, null);
@@ -22,6 +23,8 @@ public class SkinCompatScrollView extends ScrollView implements SkinCompatSuppor
         super(context, attrs, defStyleAttr);
         mBackgroundTintHelper = new SkinCompatBackgroundHelper(this);
         mBackgroundTintHelper.loadFromAttributes(attrs, defStyleAttr);
+        mScrollBarHelper = new SkinCompatScrollBarHelper(this);
+        mScrollBarHelper.loadFromAttributes(attrs, defStyleAttr);
     }
 
     @Override
@@ -36,6 +39,9 @@ public class SkinCompatScrollView extends ScrollView implements SkinCompatSuppor
     public void applySkin() {
         if (mBackgroundTintHelper != null) {
             mBackgroundTintHelper.applySkin();
+        }
+        if (mScrollBarHelper != null) {
+            mScrollBarHelper.applySkin();
         }
     }
 
